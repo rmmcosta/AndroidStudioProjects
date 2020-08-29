@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Beer Adviser</string>
+    <string name="beer_description">Choose the type and hit find</string>
+    <string name="find_beer_btn">find beer</string>
+</resources>
