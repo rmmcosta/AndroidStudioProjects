@@ -1,0 +1,9 @@
+<resources>
+    <string name="toastMessage">Olá Toast!</string>
+    <string name="app_name">TentaCoisas</string>
+    <string name="buttonToastString">Toast</string>
+    <string name="buttonPTText">PT</string>
+    <string name="buttonENText">EN</string>
+    <string name="buttonToastJavaText">ToastJava</string>
+    <string name="triggerExceptionBtnText">Despoletar Exceção</string>
+</resources>
