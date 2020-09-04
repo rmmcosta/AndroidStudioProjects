@@ -6,4 +6,9 @@
     <string name="buttonENText">EN</string>
     <string name="buttonToastJavaText">ToastJava</string>
     <string name="triggerExceptionBtnText">Trigger Exception</string>
+    <string name="textViewLinkABola">www.abola.pt</string>
+    <string name="buttonNextText">Next</string>
+    <string name="image">bikerCenas</string>
+    <string name="imageViewDesc">Biker</string>
+    <string name="carImageDesc">car</string>
 </resources>

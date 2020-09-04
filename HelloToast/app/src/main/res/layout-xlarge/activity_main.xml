@@ -20,6 +20,7 @@
         android:text="@string/buttonToastText"
         android:textColor="@android:color/white"
         android:textStyle="bold"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,6 +39,7 @@
         android:text="@string/buttonCountText"
         android:textColor="@android:color/white"
         android:textStyle="bold"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -57,7 +59,7 @@
         android:gravity="center"
         android:text="0"
         android:textColor="@color/colorPrimary"
-        android:textSize="160sp"
+        android:textSize="240sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/buttonCount"
         app:layout_constraintEnd_toEndOf="parent"
