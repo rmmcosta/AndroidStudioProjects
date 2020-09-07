@@ -6,23 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:id="@+id/subAndArticle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@id/textViewHeading">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/button"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_below="@id/textViewSubHeading"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:text="@string/textAddComment" />
 
-            <TextView
-                android:id="@+id/textViewSubHeading"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_regular"
-                android:text="@string/textSubHeading"
-                android:textAppearance="@style/TextAppearance.AppCompat" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_toEndOf="@id/textViewSubHeading"
+            android:layout_toRightOf="@id/textViewSubHeading">
 
             <TextView
                 android:id="@+id/textViewArticle"
@@ -32,14 +37,19 @@
                 android:lineSpacingExtra="@dimen/line_spacing"
                 android:padding="@dimen/padding_regular"
                 android:text="@string/textArticle" />
+        </ScrollView>
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/textAddComment" />
-        </LinearLayout>
-    </ScrollView>
+        <TextView
+            android:id="@+id/textViewSubHeading"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:padding="@dimen/padding_regular"
+            android:text="@string/textSubHeading"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/textViewHeading"
