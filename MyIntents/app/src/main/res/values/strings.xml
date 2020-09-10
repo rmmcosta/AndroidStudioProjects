@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Intents</string>
+    <string name="go2ImplicitActivity">Implicit Intents</string>
+    <string name="btnABolaText">A Bola</string>
+    <string name="btnCallAnaText">Call Ana</string>
+    <string name="btnPassDataText">Pass Text</string>
+    <string name="input_your_email">input your email</string>
+    <string name="btnEnterAndBackText">Enter and back</string>
+    <string name="etYourNameHint">input your name</string>
+    <string name="btnOk">Ok</string>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnImplicitIntents"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/go2ImplicitActivity"
+        android:onClick="go2ImplicitIntents"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnPassData"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btnPassDataText"
+        android:onClick="sendEmail"
+        app:layout_constraintBottom_toTopOf="@+id/btnImplicitIntents"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextEmailAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="@string/input_your_email"
+        app:layout_constraintBottom_toTopOf="@+id/btnPassData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="@string/input_your_email" />
+
+    <Button
+        android:id="@+id/btnEnterAndBack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btnEnterAndBackText"
+        android:onClick="goGetText"
+        app:layout_constraintBottom_toTopOf="@+id/btnPassData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TwoActivities</string>
+    <string name="btnSendText">Send</string>
+    <string name="input_your_message">input your message</string>
+    <string name="tvReplyTitleText">Reply received</string>
+    <string name="tvTitleText">Message received</string>
+    <string name="btnReplyText">Reply</string>
+    <string name="input_your_reply">input your reply</string>
+</resources>
