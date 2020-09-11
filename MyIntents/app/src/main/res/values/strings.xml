@@ -8,4 +8,7 @@
     <string name="btnEnterAndBackText">Enter and back</string>
     <string name="etYourNameHint">input your name</string>
     <string name="btnOk">Ok</string>
+    <string name="btn_send_outside">send outside</string>
+    <string name="input_your_message">input your message</string>
+    <string name="chooser">Chooser</string>
 </resources>

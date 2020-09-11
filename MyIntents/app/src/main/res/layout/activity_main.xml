@@ -30,14 +30,14 @@
         android:id="@+id/editTextEmailAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:autofillHints="@string/input_your_email"
         android:ems="10"
-        android:inputType="textEmailAddress"
         android:hint="@string/input_your_email"
-        app:layout_constraintBottom_toTopOf="@+id/btnPassData"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/btnSendOutside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="@string/input_your_email" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnEnterAndBack"
@@ -46,6 +46,38 @@
         android:text="@string/btnEnterAndBackText"
         android:onClick="goGetText"
         app:layout_constraintBottom_toTopOf="@+id/btnPassData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSendOutside"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_send_outside"
+        android:onClick="sendMessageOutside"
+        app:layout_constraintBottom_toTopOf="@+id/btnEnterAndBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/input_your_message"
+        android:ems="10"
+        android:hint="@string/input_your_message"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailAddress" />
+
+    <Button
+        android:id="@+id/btnChooser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/chooser"
+        android:onClick="sendWithChooser"
+        app:layout_constraintBottom_toTopOf="@+id/btnSendOutside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
