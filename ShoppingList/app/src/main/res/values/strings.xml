@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ShoppingList</string>
+    <string name="shoppingItemsTitle">Choose one of the following items:</string>
+    <string name="btnCheeseText">Cheese</string>
+    <string name="btnRiceText">Rice</string>
+    <string name="btnApplesText">Apples</string>
+    <string name="btnTomatoesText">Tomatoes</string>
+    <string name="mainTitle">Your shopping cart:</string>
+    <string name="addItem">add item</string>
+</resources>

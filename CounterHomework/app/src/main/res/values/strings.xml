@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CounterHomework</string>
+    <string name="count">Count</string>
+    <string name="input_anything_you_like">input anything you like</string>
+</resources>

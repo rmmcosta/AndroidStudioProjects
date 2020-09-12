@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".ShoppingItems">
+
+    <Button
+        android:id="@+id/btnCheese"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/btnColor"
+        android:text="@string/btnCheeseText"
+        android:textColor="@color/btnTextColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:onClick="addCheese"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvShoppingItemsTitle" />
+
+    <Button
+        android:id="@+id/btnRice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/btnColor"
+        android:text="@string/btnRiceText"
+        android:textColor="@color/btnTextColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:onClick="addRice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCheese" />
+
+    <Button
+        android:id="@+id/btnApples"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/btnColor"
+        android:text="@string/btnApplesText"
+        android:textColor="@color/btnTextColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:onClick="addApples"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRice" />
+
+    <Button
+        android:id="@+id/btnTomatoes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/btnColor"
+        android:text="@string/btnTomatoesText"
+        android:textColor="@color/btnTextColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:onClick="addTomatoes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnApples" />
+
+    <TextView
+        android:id="@+id/tvShoppingItemsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/shoppingItemsTitle"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
