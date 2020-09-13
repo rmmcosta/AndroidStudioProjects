@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Stopwatch</string>
+    <string name="btnStartText">Start</string>
+    <string name="btnStopText">Stop</string>
+    <string name="btnResetText">Reset</string>
+    <string name="btnSendText">Send message</string>
+</resources>
