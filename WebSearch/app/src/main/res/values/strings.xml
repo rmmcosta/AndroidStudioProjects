@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WebSearch</string>
+    <string name="btnSearchText">Search</string>
+    <string name="etSearchText">what do you want to search</string>
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CallDummyBrowser</string>
+    <string name="btnBrowserText">Browser</string>
+</resources>
