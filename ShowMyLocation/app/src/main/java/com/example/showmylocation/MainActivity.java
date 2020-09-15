@@ -56,6 +56,16 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         Log.d(LOG, "on permission result");
+        if(requestCode==1)
+        {
+            for (String s : permissions) {
+                Log.d(LOG, s);
+            }
+            for (int i : grantResults) {
+                Log.d(LOG, String.valueOf(i));
+            }
+        }
+        checkAndRequestPermission();
     }
 
     @Override
@@ -88,5 +98,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+    }
+
+    public void updateLocation(View view) {
+        checkAndRequestPermission();
     }
 }
