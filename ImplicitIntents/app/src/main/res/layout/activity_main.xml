@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/a_etWebsite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/enter_the_website"
+        android:ems="10"
+        android:hint="@string/enter_the_website"
+        android:inputType="textWebEditText" />
+
+    <Button
+        android:id="@+id/b_btnOpenWebsite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:minWidth="140dp"
+        android:onClick="openWebsite"
+        android:text="@string/btnOpenWebsiteText" />
+
+    <EditText
+        android:id="@+id/c_etLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/enter_location"
+        android:ems="10"
+        android:hint="@string/enter_location"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/d_btnOpenLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:minWidth="140dp"
+        android:onClick="openLocation"
+        android:text="@string/btnOpenLocationText" />
+
+    <EditText
+        android:id="@+id/e_etText2Share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/enter_text_2_share"
+        android:ems="10"
+        android:hint="@string/enter_text_2_share"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/f_btnShareText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:minWidth="140dp"
+        android:onClick="shareText"
+        android:text="@string/btnShareText" />
+</LinearLayout>

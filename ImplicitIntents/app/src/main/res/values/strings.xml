@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Implicit Intents</string>
+    <string name="btnOpenWebsiteText">Open Website</string>
+    <string name="enter_the_website">enter the website</string>
+    <string name="btnOpenLocationText">Open Location</string>
+    <string name="btnShareText">Share Text</string>
+    <string name="enter_text_2_share">enter a text to share</string>
+    <string name="enter_location">enter a location</string>
+    <string name="share_chooser_title">Share this text with:</string>
+    <string name="error_popup_location">can\'t handle the provided location</string>
+    <string name="error_popup_website">can\'t handle the provided website</string>
+</resources>
