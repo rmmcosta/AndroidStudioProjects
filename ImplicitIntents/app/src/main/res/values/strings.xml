@@ -9,4 +9,6 @@
     <string name="share_chooser_title">Share this text with:</string>
     <string name="error_popup_location">can\'t handle the provided location</string>
     <string name="error_popup_website">can\'t handle the provided website</string>
+    <string name="btnTakePicture">Take a picture</string>
+    <string name="pictureTaken">picture taken with camera</string>
 </resources>

@@ -62,4 +62,12 @@
         android:minWidth="140dp"
         android:onClick="shareText"
         android:text="@string/btnShareText" />
+
+    <Button
+        android:id="@+id/btnTakePicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnTakePicture"
+        android:onClick="takePicture"
+        android:layout_marginTop="20dp"/>
 </LinearLayout>
