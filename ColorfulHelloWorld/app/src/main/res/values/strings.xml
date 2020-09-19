@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ColorfulHelloWorld</string>
+    <string name="helloWorld">Gosto de ti</string>
+    <string name="btnChangeColor">Change Color</string>
+</resources>
