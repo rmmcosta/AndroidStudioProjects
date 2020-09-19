@@ -14,8 +14,15 @@ public class Calculator {
     }
 
     public double div(double x, double y) {
+        if (y == 0) {
+            throw new IllegalArgumentException("Divide by 0 is not allowed!");
+        }
         return x / y;
     }
 
-    public enum Operation {SUM, SUB, MULT, DIV}
+    public double pow(double x, double y) {
+        return Math.pow(x,y);
+    }
+
+    public enum Operation {SUM, SUB, MULT, DIV, POW}
 }

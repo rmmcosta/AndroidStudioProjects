@@ -1,12 +1,14 @@
 package com.example.simplecalculator;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         calculator = new Calculator();
     }
 
-    private void compute(Calculator.Operation operation) {
+    public void compute(Calculator.Operation operation) {
         double firstValue, secondValue;
         try {
             firstValue = getDoubleOperand(etFirstValue);
@@ -35,22 +37,42 @@ public class MainActivity extends AppCompatActivity {
             tvResult.setText(R.string.computationError);
             return;
         }
-        double result=0.0;
-        switch (operation) {
-            case SUM:
-                result = calculator.sum(firstValue, secondValue);
-                break;
-            case SUB:
-                result = calculator.sub(firstValue, secondValue);
-                break;
-            case MULT:
-                result = calculator.mult(firstValue, secondValue);
-                break;
-            case DIV:
-                result = calculator.div(firstValue, secondValue);
-                break;
+        double result = 0.0;
+        try {
+            switch (operation) {
+                case SUM:
+                    result = calculator.sum(firstValue, secondValue);
+                    break;
+                case SUB:
+                    result = calculator.sub(firstValue, secondValue);
+                    break;
+                case MULT:
+                    result = calculator.mult(firstValue, secondValue);
+                    break;
+                case DIV:
+                    result = calculator.div(firstValue, secondValue);
+                    break;
+                case POW:
+                    result = calculator.pow(firstValue, secondValue);
+                    break;
+            }
+            setDoubleOperand(tvResult, result);
+        } catch (IllegalArgumentException ie) {
+            showExceptionMessage(ie);
+        } catch (Exception e) {
+            showExceptionMessage(e);
         }
-        setDoubleOperand(tvResult, result);
+    }
+
+    private void showExceptionMessage(Exception e) {
+        Toast toast = Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT);
+        changeToastColor(toast);
+        toast.show();
+    }
+
+    private void changeToastColor(Toast toast) {
+        toast.getView().setBackgroundColor(Color.RED);
+        toast.getView().setPadding(5,5,5,5);
     }
 
     private void setDoubleOperand(TextView textView, double result) {
@@ -64,13 +86,20 @@ public class MainActivity extends AppCompatActivity {
     public void add(View view) {
         compute(Calculator.Operation.SUM);
     }
+
     public void sub(View view) {
         compute(Calculator.Operation.SUB);
     }
+
     public void mult(View view) {
         compute(Calculator.Operation.MULT);
     }
+
     public void div(View view) {
         compute(Calculator.Operation.DIV);
+    }
+
+    public void pow(View view) {
+        compute(Calculator.Operation.POW);
     }
 }
