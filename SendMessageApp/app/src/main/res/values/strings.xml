@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Send Message App</string>
+    <string name="ToHint">To</string>
+    <string name="MessageHint">Type your message here</string>
+    <string name="btnSendEmailText">Send email</string>
+    <string name="btnSendSmsText">Send sms</string>
+</resources>

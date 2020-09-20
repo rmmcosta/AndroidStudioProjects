@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/mainPadding"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/etTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/ToHint"
+        android:hint="@string/ToHint"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etMessage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:autofillHints="@string/MessageHint"
+        android:gravity="top"
+        android:hint="@string/MessageHint"
+        android:inputType="text" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnSendEmail"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sendEmail"
+            android:text="@string/btnSendEmailText"
+            android:textColor="@color/btnSendEmail" />
+
+        <Button
+            android:id="@+id/btnSendSms"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="sendSms"
+            android:text="@string/btnSendSmsText"
+            android:textColor="@color/btnSendSms" />
+    </LinearLayout>
+
+
+</LinearLayout>
