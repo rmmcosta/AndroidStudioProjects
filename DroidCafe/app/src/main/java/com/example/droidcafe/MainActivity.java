@@ -12,6 +12,7 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,5 +53,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void orderDonut(View view) {
+        showToast(R.string.donut_order_message);
+    }
+
+    public void orderIceCream(View view) {
+        showToast(R.string.ice_cream_order_message);
+    }
+
+    public void orderFroyo(View view) {
+        showToast(R.string.froyo_order_message);
+    }
+
+    private void showToast(int orderMessageId) {
+        Toast toast = Toast.makeText(getApplicationContext(), orderMessageId, Toast.LENGTH_SHORT);
+        toast.show();
     }
 }
