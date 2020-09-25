@@ -18,7 +18,7 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     private static HashMap<String, Integer> cart;
-    public static String ITEM_KEY = "ItemKey";
+    public static final String LOG = "MyLog";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        initializeCart();
+    }
+
+    public static void initializeCart() {
         cart = new HashMap<>();
     }
 

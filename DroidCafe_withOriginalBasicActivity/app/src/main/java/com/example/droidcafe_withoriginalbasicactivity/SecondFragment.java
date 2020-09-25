@@ -1,6 +1,7 @@
 package com.example.droidcafe_withoriginalbasicactivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,18 +28,20 @@ public class SecondFragment extends Fragment {
     }
 
     private void showCartItems() {
+        StringBuilder stringBuilder = new StringBuilder();
         Set<Map.Entry<String, Integer>> cartItems = MainActivity.getCartItems();
         if (cartItems.isEmpty()) {
             tvCartItems.setText("No Items in the Cart.");
         }
         for (Map.Entry<String, Integer> item : cartItems) {
-            tvCartItems.setText(item.getKey() + " - " + item.getValue() + "\n");
+            stringBuilder.append(item.getKey() + " - " + item.getValue() + "\n");
         }
+        tvCartItems.setText(stringBuilder.toString());
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        Log.d(MainActivity.LOG, "created second fragment");
         view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +51,6 @@ public class SecondFragment extends Fragment {
         });
 
         tvCartItems = view.findViewById(R.id.tvCartItems);
-        MainActivity.addToCart(savedInstanceState.getString(MainActivity.ITEM_KEY));
         showCartItems();
     }
 }
