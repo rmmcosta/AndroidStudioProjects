@@ -15,10 +15,12 @@
     <string name="IceCreamText">Ice cream sandwiches have chocolate wafers and vanilla filling.</string>
     <string name="froyoText">FroYo is premium self-service yogurt.</string>
     <string name="ivDonutDesc">Donut</string>
-    <string name="ivIceCreamDesc">Ice Cream</string>
+    <string name="ivIceCreamDesc">IceCream</string>
     <string name="ivFroyoDesc">FroYo</string>
 
     <string name="donut_order_message">You ordered a donut.</string>
     <string name="ice_cream_order_message">You ordered an ice cream sandwich.</string>
     <string name="froyo_order_message">You ordered a FroYo.</string>
+    <string name="cart_item_image">Cart item image</string>
+    <string name="btnBuy">Buy</string>
 </resources>

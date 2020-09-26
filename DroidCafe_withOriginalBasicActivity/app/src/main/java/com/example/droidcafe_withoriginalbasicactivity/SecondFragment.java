@@ -1,22 +1,28 @@
 package com.example.droidcafe_withoriginalbasicactivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class SecondFragment extends Fragment {
 
-    private TextView tvCartItems;
+    private RecyclerView rvCart;
 
     @Override
     public View onCreateView(
@@ -27,16 +33,11 @@ public class SecondFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_second, container, false);
     }
 
-    private void showCartItems() {
-        StringBuilder stringBuilder = new StringBuilder();
+    private void showCartItems(Context context) {
         Set<Map.Entry<String, Integer>> cartItems = MainActivity.getCartItems();
-        if (cartItems.isEmpty()) {
-            tvCartItems.setText("No Items in the Cart.");
-        }
-        for (Map.Entry<String, Integer> item : cartItems) {
-            stringBuilder.append(item.getKey() + " - " + item.getValue() + "\n");
-        }
-        tvCartItems.setText(stringBuilder.toString());
+        CartItemsAdapter cartItemsAdapter = new CartItemsAdapter(cartItems);
+        rvCart.setAdapter(cartItemsAdapter);
+        rvCart.setLayoutManager(new LinearLayoutManager(context));
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class SecondFragment extends Fragment {
             }
         });
 
-        tvCartItems = view.findViewById(R.id.tvCartItems);
-        showCartItems();
+        rvCart = view.findViewById(R.id.rvCart);
+        showCartItems(getContext());
     }
 }

@@ -1,5 +1,7 @@
 package com.example.droidcafe_withoriginalbasicactivity;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,8 +19,29 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static HashMap<String, Integer> cart;
     public static final String LOG = "MyLog";
+    private static HashMap<String, Integer> cart;
+
+    public static void initializeCart() {
+        cart = new HashMap<>();
+    }
+
+    public static void addToCart(String item) {
+        int qty = 1;
+        if (cart.containsKey(item))
+            qty += cart.get(item);
+        cart.put(item, qty);
+    }
+
+    public static void removeFromCart(String item) {
+        if (cart.containsKey(item)) {
+            cart.remove(item);
+        }
+    }
+
+    public static Set<Map.Entry<String, Integer>> getCartItems() {
+        return cart.entrySet();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +54,11 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                confirmPurchase(view);
             }
         });
 
         initializeCart();
-    }
-
-    public static void initializeCart() {
-        cart = new HashMap<>();
     }
 
     @Override
@@ -65,20 +83,16 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static void addToCart(String item) {
-        int qty = 1;
-        if (cart.containsKey(item))
-            qty += cart.get(item);
-        cart.put(item, qty);
-    }
-
-    public static void removeFromCart(String item) {
-        if (cart.containsKey(item)) {
-            cart.remove(item);
+    public void confirmPurchase(View view) {
+        if (cart.isEmpty()) {
+            Snackbar snackbar = Snackbar.make(view, "Your cart is empty!", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null);
+            View snackbarView = snackbar.getView();
+            snackbarView.setBackgroundColor(Color.RED);
+            snackbar.show();
+        } else {
+            Intent intent = new Intent(this, ConfimPurchase.class);
+            startActivity(intent);
         }
-    }
-
-    public static Set<Map.Entry<String, Integer>> getCartItems() {
-        return cart.entrySet();
     }
 }

@@ -10,74 +10,73 @@
         android:id="@+id/tvIntro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
         android:text="@string/introText"
         android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="261dp"
+        tools:layout_editor_absoluteY="60dp" />
 
     <ImageView
         android:id="@+id/ivDonut"
-        android:layout_width="wrap_content"
+        android:layout_width="159dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/landMarginTopImageView"
         android:contentDescription="@string/ivDonutDesc"
         android:src="@drawable/donut_circle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvIntro" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/ivIceCream"
+        app:layout_constraintTop_toBottomOf="@id/tvIntro" />
 
     <ImageView
         android:id="@+id/ivIceCream"
-        android:layout_width="wrap_content"
+        android:layout_width="159dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:contentDescription="@string/ivIceCreamDesc"
         android:src="@drawable/icecream_circle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivDonut" />
+        app:layout_constraintLeft_toRightOf="@id/ivDonut"
+        app:layout_constraintRight_toLeftOf="@id/ivFroyo"
+        app:layout_constraintTop_toTopOf="@id/ivDonut" />
 
     <ImageView
         android:id="@+id/ivFroyo"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:contentDescription="@string/ivFroyoDesc"
         android:src="@drawable/froyo_circle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivIceCream" />
+        app:layout_constraintLeft_toRightOf="@id/ivIceCream"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivDonut" />
 
     <TextView
         android:id="@+id/tvDonut"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_marginTop="@dimen/landMarginTopTextView"
         android:text="@string/donutText"
-        app:layout_constraintLeft_toRightOf="@id/ivDonut"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivDonut" />
+        app:layout_constraintLeft_toLeftOf="@id/ivDonut"
+        app:layout_constraintRight_toRightOf="@id/ivDonut"
+        app:layout_constraintTop_toBottomOf="@id/ivDonut" />
 
     <TextView
         android:id="@+id/tvIceCream"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_marginTop="@dimen/landMarginTopTextView"
         android:text="@string/IceCreamText"
-        app:layout_constraintLeft_toRightOf="@id/ivIceCream"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivIceCream" />
+        app:layout_constraintLeft_toLeftOf="@id/ivIceCream"
+        app:layout_constraintRight_toRightOf="@id/ivIceCream"
+        app:layout_constraintTop_toBottomOf="@id/ivIceCream" />
 
     <TextView
         android:id="@+id/tvFroyo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_marginTop="@dimen/landMarginTopTextView"
         android:text="@string/froyoText"
-        app:layout_constraintLeft_toRightOf="@id/ivFroyo"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivFroyo" />
+        app:layout_constraintLeft_toLeftOf="@id/ivFroyo"
+        app:layout_constraintRight_toRightOf="@id/ivFroyo"
+        app:layout_constraintTop_toBottomOf="@id/ivFroyo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
