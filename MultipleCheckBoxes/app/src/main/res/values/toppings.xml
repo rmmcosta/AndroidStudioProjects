@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="toppings">
+        <item>@string/cbox1</item>
+        <item>@string/cbox2</item>
+        <item>@string/cbox3</item>
+        <item>@string/cbox4</item>
+        <item>@string/cbox5</item>
+    </string-array>
+</resources>

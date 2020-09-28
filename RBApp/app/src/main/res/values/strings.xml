@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RBApp</string>
+    <string name="addressLabel">Address:</string>
+    <string name="addressHint">Input your address</string>
+    <string name="labelForDeliveryMethod">Choose a delivery method:</string>
+    <string name="rbSameDay">Same day</string>
+    <string name="rbNextDay">Next day</string>
+    <string name="rbPickUp">Pick up</string>
+    <string name="labelPhone">Phone</string>
+    <string name="etPhoneHint">enter phone</string>
+</resources>

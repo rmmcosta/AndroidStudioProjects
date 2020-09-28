@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MultipleCheckBoxes</string>
+    <string name="cbox1">Chocolate syrup</string>
+    <string name="cbox2">Sprinkles</string>
+    <string name="cbox3">Crushed nuts</string>
+    <string name="cbox4">Cherries</string>
+    <string name="cbox5">Oreo cookie crumbles</string>
+    <string name="presentToppings">Toppings:</string>
+</resources>

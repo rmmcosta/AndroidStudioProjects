@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mainPadding">26dp</dimen>
+    <dimen name="btnTextSize">24sp</dimen>
+    <dimen name="btnPadding">16dp</dimen>
+    <dimen name="listPadding">16dp</dimen>
+    <dimen name="btnRadius">12dp</dimen>
+</resources>
