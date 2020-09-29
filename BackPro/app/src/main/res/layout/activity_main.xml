@@ -33,7 +33,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListApps"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
         android:onClick="refreshApps"
         android:background="@drawable/btn_rounded_secondary"
         app:layout_constraintTop_toBottomOf="@id/rvListApps"
-        app:layout_constraintBottom_toBottomOf="@id/btnKill"
+        app:layout_constraintBottom_toTopOf="@id/btnKill"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteX="26dp"
@@ -66,6 +66,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvListApps" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRefresh" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
