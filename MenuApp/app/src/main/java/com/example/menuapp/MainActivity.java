@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,17 +12,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.zip.Inflater;
-
-import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
-
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvHello;
     private TextView tvCenas;
+    private int selectedTextViewId;
+    private static final String LOG = "MyLog";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_context_operations, menu);
+        selectedTextViewId = v.getId();
     }
 
     @Override
@@ -59,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
-        int viewId = item.getActionView().getId();
+        int viewId = selectedTextViewId;
         switch (itemId) {
             case R.id.itemShow:
                 showDetail(viewId);
