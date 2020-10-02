@@ -28,4 +28,12 @@
         android:text="@string/action_mode"
         android:layout_marginTop="@dimen/defaultMarginTop"/>
 
+    <TextView
+        android:id="@+id/tvPopup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/show_popup"
+        android:onClick="showPopup"
+        android:layout_marginTop="@dimen/defaultMarginTop"/>
+
 </LinearLayout>

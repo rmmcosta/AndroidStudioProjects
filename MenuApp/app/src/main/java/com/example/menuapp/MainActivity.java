@@ -10,12 +10,21 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActionMode actionMode;
+
+    public void showPopup(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        /*MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_popup, popupMenu.getMenu());*/
+        popupMenu.inflate(R.menu.menu_popup);
+        popupMenu.show();
+    }
 
     class MyActionModeCallback implements ActionMode.Callback {
         @Override
