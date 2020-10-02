@@ -21,4 +21,11 @@
         android:text="@string/cenas"
         android:layout_marginTop="@dimen/defaultMarginTop"/>
 
+    <TextView
+        android:id="@+id/tvActionMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/action_mode"
+        android:layout_marginTop="@dimen/defaultMarginTop"/>
+
 </LinearLayout>

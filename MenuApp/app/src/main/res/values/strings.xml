@@ -7,4 +7,7 @@
     <string name="context_op_delete">Delete</string>
     <string name="cenas">Cenas</string>
     <string name="hello">Hello World!</string>
+    <string name="action_mode">Action Mode</string>
+    <string name="action_2">Action 2</string>
+    <string name="action_1">Action 1</string>
 </resources>
