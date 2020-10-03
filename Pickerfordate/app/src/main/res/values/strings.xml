@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Picker for date</string>
+    <string name="hello">Hello World! Choose a date</string>
+    <string name="date">Date</string>
+</resources>
