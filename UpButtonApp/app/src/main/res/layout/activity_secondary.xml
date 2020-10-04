@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/main_padding"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondaryActivity">
+
+    <TextView
+        android:id="@+id/tvSecondScreenTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/secondary_screen_title"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="184dp" />
+
+    <Button
+        android:id="@+id/btnGo2Tertiary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="go2Tertiary"
+        android:text="@string/btnTertiary" />
+</LinearLayout>

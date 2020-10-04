@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Up Button App</string>
+    <string name="secondary_screen_title">Secondary screen</string>
+    <string name="btnTertiary">Tertiary</string>
+    <string name="label_2nd_screen">2nd</string>
+    <string name="label_3rd_screen">3rd</string>
+</resources>
