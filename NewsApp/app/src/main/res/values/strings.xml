@@ -3,4 +3,7 @@
     <string name="tab_1st">Top Stories</string>
     <string name="tab_2nd">Tech News</string>
     <string name="tab_3rd">Cooking</string>
+    <string name="fragment_topStories_title">These are the top stories:</string>
+    <string name="fragment_techNews_title">Tech news you can use:</string>
+    <string name="fragment_cooking_title">Cooking tips:</string>
 </resources>
