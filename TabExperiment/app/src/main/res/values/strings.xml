@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Tab Experiment</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tuesday_title">Hello Tuesday</string>
+    <string name="monday_title">Hello Monday</string>
+    <string name="wednesday_title">Hello Wednesday</string>
+</resources>
