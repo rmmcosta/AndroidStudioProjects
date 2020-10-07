@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Nav Drawer Experiment</string>
+    <string name="content_main_title">Hello World!</string>
 </resources>
