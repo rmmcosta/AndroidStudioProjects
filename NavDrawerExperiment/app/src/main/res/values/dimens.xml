@@ -2,4 +2,5 @@
 <resources>
     <dimen name="padding_main">16dp</dimen>
     <dimen name="floating_button_margin">16dp</dimen>
+    <dimen name="nav_title_padding">5dp</dimen>
 </resources>

@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Nav Drawer Experiment</string>
     <string name="content_main_title">Hello World!</string>
+    <string name="nav_header_background">nav_header_background</string>
+    <string name="menu">Menu</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
 </resources>
