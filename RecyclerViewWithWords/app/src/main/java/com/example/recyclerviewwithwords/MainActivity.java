@@ -37,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         initializeWordsList(20);
+
+        WordListAdapter wordListAdapter = new WordListAdapter(this, mWordList);
+        RecyclerView recyclerView = findViewById(R.id.RecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(wordListAdapter);
     }
 
     private void addWord() {

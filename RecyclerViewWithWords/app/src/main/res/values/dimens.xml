@@ -1,4 +1,6 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="padding_main">16dp</dimen>
+    <dimen name="padding_item">12dp</dimen>
+    <dimen name="textSize_wordListItem">24sp</dimen>
 </resources>
