@@ -1,24 +1,25 @@
 package com.example.recyclerviewwithwords;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import android.view.Menu;
-import android.view.MenuItem;
-
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public final LinkedList<String> mWordList = new LinkedList<>();
+    private final String SAVED_WORDS_KEY = "SAVED_WORDS_KEY";
+    public LinkedList<String> mWordList = new LinkedList<>();
     private RecyclerView mRecyclerView;
 
     @Override
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        initializeWordsList(20);
+        if (mWordList.isEmpty())
+            initializeWordsList(20);
 
         mRecyclerView = findViewById(R.id.RecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -60,6 +62,26 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < num; i++) {
             mWordList.add("Word " + i);
         }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        ArrayList<String> tempArrayList = savedInstanceState.getStringArrayList(SAVED_WORDS_KEY);
+        for (int i = 0; i < tempArrayList.size(); i++) {
+            if (i < mWordList.size()) {
+                mWordList.set(i, tempArrayList.get(i));
+            } else {
+                mWordList.add(tempArrayList.get(i));
+            }
+        }
+        mRecyclerView.getAdapter().notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putStringArrayList(SAVED_WORDS_KEY, new ArrayList<>(mWordList));
     }
 
     @Override
