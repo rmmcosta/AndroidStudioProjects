@@ -3,7 +3,6 @@ package com.example.recyclerviewwithwords;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -20,6 +19,7 @@ import java.util.LinkedList;
 public class MainActivity extends AppCompatActivity {
 
     public final LinkedList<String> mWordList = new LinkedList<>();
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +38,22 @@ public class MainActivity extends AppCompatActivity {
 
         initializeWordsList(20);
 
+        mRecyclerView = findViewById(R.id.RecyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        setAdapter();
+    }
+
+    private void setAdapter() {
         WordListAdapter wordListAdapter = new WordListAdapter(this, mWordList);
-        RecyclerView recyclerView = findViewById(R.id.RecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(wordListAdapter);
+        mRecyclerView.setAdapter(wordListAdapter);
     }
 
     private void addWord() {
-        String word = "+ Word " + mWordList.size() + 1;
+        int prevSize = mWordList.size();
+        String word = "+ Word " + prevSize;
         mWordList.add(word);
+        mRecyclerView.getAdapter().notifyItemInserted(prevSize);
+        mRecyclerView.scrollToPosition(prevSize);
     }
 
     private void initializeWordsList(int num) {
