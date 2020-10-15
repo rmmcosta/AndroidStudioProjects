@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private final String SAVED_WORDS_KEY = "SAVED_WORDS_KEY";
     public LinkedList<String> mWordList = new LinkedList<>();
     private RecyclerView mRecyclerView;
+    private final int INITIAL_WORDS_NUM = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if (mWordList.isEmpty())
-            initializeWordsList(20);
+            initializeWordsList(INITIAL_WORDS_NUM);
 
         mRecyclerView = findViewById(R.id.RecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -59,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeWordsList(int num) {
+        if (!mWordList.isEmpty()) {
+            mWordList.clear();
+        }
         for (int i = 0; i < num; i++) {
             mWordList.add("Word " + i);
         }
@@ -99,7 +103,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_reset) {
+            initializeWordsList(INITIAL_WORDS_NUM);
+            mRecyclerView.getAdapter().notifyDataSetChanged();
             return true;
         }
 
