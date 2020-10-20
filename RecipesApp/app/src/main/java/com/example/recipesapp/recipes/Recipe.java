@@ -28,6 +28,14 @@ public class Recipe {
         ingredientList.add(new Ingredient(quantity, name, unit));
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public class Ingredient {
         private int quantity;
         private String name;
@@ -42,7 +50,7 @@ public class Recipe {
         @NonNull
         @Override
         public String toString() {
-            return String.valueOf(quantity) + " " + unit + " " + name;
+            return quantity + " " + unit + " " + name;
         }
     }
 }
