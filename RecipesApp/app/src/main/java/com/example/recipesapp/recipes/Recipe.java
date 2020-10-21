@@ -4,11 +4,11 @@ import android.media.Image;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-enum Unit {g, lt}
-
-public class Recipe {
+public class Recipe implements Serializable {
     private Image image;
     private List<Ingredient> ingredientList;
     private String title, description;
@@ -17,15 +17,21 @@ public class Recipe {
         this.image = image;
         this.title = title;
         this.description = description;
+        ingredientList = new ArrayList<>();
     }
 
     public Recipe(String title, String description) {
         this.title = title;
         this.description = description;
+        ingredientList = new ArrayList<>();
     }
 
-    public void addIngredient(int quantity, Unit unit, String name) {
+    public void addIngredient(double quantity, Unit unit, String name) {
         ingredientList.add(new Ingredient(quantity, name, unit));
+    }
+
+    public List<Ingredient> getIngredientList() {
+        return ingredientList;
     }
 
     public String getTitle() {
@@ -36,12 +42,16 @@ public class Recipe {
         return description;
     }
 
-    public class Ingredient {
-        private int quantity;
-        private String name;
-        private Unit unit;
+    public Image getImage() {
+        return image;
+    }
 
-        public Ingredient(int quantity, String name, Unit unit) {
+    public class Ingredient implements Serializable {
+        private final double quantity;
+        private final String name;
+        private final Unit unit;
+
+        public Ingredient(double quantity, String name, Unit unit) {
             this.quantity = quantity;
             this.name = name;
             this.unit = unit;
@@ -50,7 +60,7 @@ public class Recipe {
         @NonNull
         @Override
         public String toString() {
-            return quantity + " " + unit + " " + name;
+            return quantity + " " + (unit != unit ? unit : "") + " " + name;
         }
     }
 }
