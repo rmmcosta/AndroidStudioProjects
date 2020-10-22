@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ListPets</string>
+    <string name="list_title">Here is my Pet list</string>
+    <string name="sample_pet_name">The Pet Name</string>
+    <string name="sample_pet_description">The Pet description</string>
+    <string name="pet_item_image_description">Picture of the pet</string>
+</resources>

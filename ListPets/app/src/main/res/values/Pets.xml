@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pets_name">
+        <item>Cat</item>
+        <item>Dog</item>
+        <item>Snake</item>
+        <item>Cow</item>
+        <item>Rabbit</item>
+        <item>Pigeon</item>
+        <item>Rat</item>
+        <item>Elephant</item>
+    </string-array>
+    <string-array name="pets_description">
+        <item>Cat makes miau</item>
+        <item>Dog is the man\'s best friend</item>
+        <item>Snake is snaky</item>
+        <item>Cow gives us milk</item>
+        <item>Rabbit eats carrots</item>
+        <item>Pigeon flies</item>
+        <item>Rat eats cheese if you let them</item>
+        <item>Elephant is big, really big</item>
+    </string-array>
+</resources>

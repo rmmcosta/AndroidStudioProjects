@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:padding="@dimen/pet_item_padding">
+
+    <ImageView
+        android:id="@+id/ivPet"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="@dimen/image_pet_margin_left"
+        android:contentDescription="@string/pet_item_image_description"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvPetName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/ivPet"
+        android:layout_marginTop="@dimen/pet_item_title_margin_top"
+        android:text="@string/sample_pet_name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvPetDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPetName"
+        android:layout_toEndOf="@id/ivPet"
+        android:text="@string/sample_pet_description" />
+</RelativeLayout>
