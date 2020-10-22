@@ -1,7 +1,5 @@
 package com.example.recipesapp.recipes;
 
-import android.media.Image;
-
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
@@ -9,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recipe implements Serializable {
-    private Image image;
+    private int drawable;
     private List<Ingredient> ingredientList;
     private String title, description;
 
-    public Recipe(Image image, String title, String description) {
-        this.image = image;
+    public Recipe(int drawable, String title, String description) {
+        this.drawable = drawable;
         this.title = title;
         this.description = description;
         ingredientList = new ArrayList<>();
@@ -42,8 +40,8 @@ public class Recipe implements Serializable {
         return description;
     }
 
-    public Image getImage() {
-        return image;
+    public int getDrawable() {
+        return drawable;
     }
 
     public class Ingredient implements Serializable {
@@ -60,7 +58,22 @@ public class Recipe implements Serializable {
         @NonNull
         @Override
         public String toString() {
-            return quantity + " " + (unit != unit ? unit : "") + " " + name;
+            return quantity + " " + getUnitDescription(unit) + " " + name;
+        }
+
+        private String getUnitDescription(Unit unit) {
+            switch (unit) {
+                case g:
+                    return "g";
+                case lt:
+                    return "lt";
+                case ml:
+                    return "ml";
+                case pitada:
+                    return "pitada";
+                default:
+                    return "";
+            }
         }
     }
 }

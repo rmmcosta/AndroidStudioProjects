@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.recipesapp.recipes.Recipe;
@@ -14,6 +17,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
     private Recipe recipe;
     private TextView tvTitle, tvDescription;
     private RecyclerView recyclerView;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,12 @@ public class RecipeDetailActivity extends AppCompatActivity {
         initializeTextViews();
         fillTextViewsWithRecipe();
         initializeRecyclerView();
+        initializeImageView();
+    }
+
+    private void initializeImageView() {
+        imageView = findViewById(R.id.ivRecipe);
+        imageView.setImageResource(recipe.getDrawable());
     }
 
     private void initializeRecyclerView() {
