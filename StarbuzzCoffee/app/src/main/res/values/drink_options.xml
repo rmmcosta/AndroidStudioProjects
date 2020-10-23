@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="drink_options">
+        <item>Latte</item>
+        <item>Cappuccino</item>
+        <item>Filter</item>
+    </string-array>
+</resources>
