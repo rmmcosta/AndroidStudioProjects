@@ -4,6 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DrinkActivity">
+    android:padding="@dimen/main_padding"
+    tools:context=".DrinkActivity"
+    tools:ignore="UseCompoundDrawables">
 
+    <ImageView
+        android:id="@+id/ivDrink"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="@string/drink_picture_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvDrinkDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/drink_description_margin_top"
+        android:gravity="center_horizontal"
+        android:text="@string/description_example"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivDrink" />
 </androidx.constraintlayout.widget.ConstraintLayout>

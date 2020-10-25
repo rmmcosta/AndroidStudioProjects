@@ -4,7 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.starbuzzcoffee.adapters.OptionsListAdapter;
 
@@ -22,7 +27,7 @@ public class TopLevelActivity extends AppCompatActivity {
 
     private void initializeRVOptionsList() {
         rvOptionsList = findViewById(R.id.rvOptionsList);
-        RecyclerView.Adapter optionsListAdapter = new OptionsListAdapter(this, optionsList);
+        RecyclerView.Adapter optionsListAdapter = new OptionsListAdapter(this, optionsList, new OnOptionsClickListener());
         rvOptionsList.setAdapter(optionsListAdapter);
         rvOptionsList.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -30,4 +35,20 @@ public class TopLevelActivity extends AppCompatActivity {
     private void initializeOptions() {
         optionsList = getResources().getStringArray(R.array.top_options);
     }
+
+    class OnOptionsClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            TextView tvCurrent = view.findViewById(R.id.tvOptionItem);
+            startSelectedActivity((String) tvCurrent.getText());
+        }
+    }
+
+    private void startSelectedActivity(String option) {
+        if (option.equalsIgnoreCase("Drinks")) {
+            Intent intent = new Intent(this, DrinkCategoryActivity.class);
+            startActivity(intent);
+        }
+    }
+
 }

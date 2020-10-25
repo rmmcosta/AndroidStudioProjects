@@ -9,16 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.starbuzzcoffee.DrinkCategoryActivity;
 import com.example.starbuzzcoffee.R;
 
 public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinksViewHolder> {
     private final Context context;
     private final String[] drinkOptions;
+    private final View.OnClickListener onDrinkClick;
 
-    public DrinksAdapter(Context context, String[] drinkOptions) {
+    public DrinksAdapter(Context context, String[] drinkOptions, View.OnClickListener onDrinkClick) {
         this.context = context;
         this.drinkOptions = drinkOptions;
+        this.onDrinkClick = onDrinkClick;
     }
 
     @NonNull
@@ -26,6 +27,7 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinksView
     public DrinksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View itemView = layoutInflater.inflate(R.layout.drinks_item, parent, false);
+        itemView.setOnClickListener(onDrinkClick);
         return new DrinksViewHolder(itemView);
     }
 
