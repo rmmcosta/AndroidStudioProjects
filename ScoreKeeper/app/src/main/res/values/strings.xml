@@ -5,4 +5,10 @@
     <string name="initial_score">0</string>
     <string name="btn_increase">+</string>
     <string name="team2_title">Team 2</string>
+    <string name="team1_increase_description">Team1 increase score</string>
+    <string name="team1_decrease_description">Team1 decrease score</string>
+    <string name="team2_increase_description">Team2 increase score</string>
+    <string name="team2_decrease_description">Team2 decrease score</string>
+    <string name="day_mode_title">Day Mode</string>
+    <string name="night_mode_title">Night Mode</string>
 </resources>

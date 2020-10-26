@@ -7,71 +7,74 @@
     android:padding="@dimen/main_padding"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tvTeam1Title"
-        style="@style/team_title"
+    <RelativeLayout
+        android:id="@+id/team1Layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/team1_title" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <Button
-            android:id="@+id/btnTeam1Decrease"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvTeam1Title"
+            style="@style/team_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_decrease" />
+            android:layout_alignParentTop="true"
+            android:gravity="center_horizontal"
+            android:text="@string/team1_title" />
+
+        <ImageButton
+            android:id="@+id/btnTeam1Decrease"
+            style="@style/MinusScoreButton"
+            android:contentDescription="@string/team1_decrease_description"
+            android:onClick="decreaseScoreTeam1" />
 
         <TextView
             android:id="@+id/tvTeam1Score"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
+            style="@style/ScoreText"
             android:text="@string/initial_score" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btnTeam1Increase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_increase" />
-    </LinearLayout>
+            style="@style/PlusScoreButton"
+            android:contentDescription="@string/team1_increase_description"
+            android:onClick="increaseScoreTeam1" />
 
-    <TextView
-        android:id="@+id/tvTeam2Title"
-        style="@style/team_title"
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/team2Layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/team2_title" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnTeam2Increase"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvTeam2Title"
+            style="@style/team_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_increase" />
+            android:layout_alignParentTop="true"
+            android:gravity="center_horizontal"
+            android:text="@string/team2_title" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btnTeam2Decrease"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/MinusScoreButton"
+            android:contentDescription="@string/team2_decrease_description"
+            android:onClick="decreaseScoreTeam2"
             android:text="@string/btn_decrease" />
 
         <TextView
             android:id="@+id/tvTeam2Score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/ScoreText"
             android:text="@string/initial_score" />
-    </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnTeam2Increase"
+            style="@style/PlusScoreButton"
+            android:contentDescription="@string/team2_increase_description"
+            android:onClick="increaseScoreTeam2"
+            android:text="@string/btn_increase" />
+
+    </RelativeLayout>
 
 </LinearLayout>
