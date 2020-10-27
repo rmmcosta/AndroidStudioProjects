@@ -9,10 +9,10 @@
     </style>
 
     <style name="ScoreButton">
-        <item name="android:background">@drawable/button_background</item>
+        <item name="android:background">@drawable/button_background_behavior</item>
         <item name="android:layout_width">@dimen/button_size</item>
         <item name="android:layout_height">@dimen/button_size</item>
-        <item name="android:tint">@color/design_default_color_primary</item>
+        <item name="tint">@color/button_color_behavior</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
 
