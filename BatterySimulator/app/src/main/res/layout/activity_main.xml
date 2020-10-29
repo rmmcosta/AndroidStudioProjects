@@ -9,31 +9,29 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivBattery"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
         android:contentDescription="@string/battery_description"
-        app:srcCompat="@drawable/ic_battery_empty"
+        app:srcCompat="@drawable/battery_levels"
         tools:ignore="VectorDrawableCompat" />
 
-    <LinearLayout
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:columnCount="2">
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
+            android:id="@+id/btnDecrease"
+            style="@style/button"
+            android:onClick="decreaseBattery"
+            android:text="@string/minus"/>
 
         <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
-    </LinearLayout>
+            android:id="@+id/btnIncrease"
+            style="@style/button"
+            android:onClick="increaseBattery"
+            android:text="@string/plus"/>
+    </GridLayout>
 </LinearLayout>

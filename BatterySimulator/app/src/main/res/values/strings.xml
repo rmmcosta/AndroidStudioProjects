@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Battery Simulator</string>
     <string name="battery_description">Battery indicator</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
 </resources>
