@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -38,14 +40,18 @@ public class MainActivity extends AppCompatActivity {
         //Get the resources from the XML file
         String[] sportsList = getResources().getStringArray(R.array.sports_titles);
         String[] sportsInfo = getResources().getStringArray(R.array.sports_info);
-        int[] sportsBanners = getResources().getIntArray(R.array.sports_banners);
+        TypedArray sportsBanners = getResources().obtainTypedArray(R.array.sports_banners);
+
+        for (int i = 0; i < sportsBanners.length(); i++) {
+            Log.d("MyLog", "id: " + sportsBanners.getResourceId(i, 0));
+        }
 
         //Clear the existing data (to avoid duplication)
         mSportsData.clear();
 
         //Create the ArrayList of Sports objects with the titles and information about each sport
         for (int i = 0; i < sportsList.length; i++) {
-            mSportsData.add(new Sport(sportsList[i], sportsInfo[i], sportsBanners[i]));
+            mSportsData.add(new Sport(sportsList[i], sportsInfo[i], sportsBanners.getResourceId(i, 0)));
         }
 
         //Notify the adapter of the change

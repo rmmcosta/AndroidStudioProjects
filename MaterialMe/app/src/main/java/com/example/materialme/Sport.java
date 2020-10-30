@@ -1,5 +1,7 @@
 package com.example.materialme;
 
+import android.util.Log;
+
 public class Sport {
     private final String mSportsTitle, mSportsInfo;
     private final int mBanner;
@@ -19,6 +21,7 @@ public class Sport {
     }
 
     public int getBanner() {
+        Log.d("MyLog", "mBanner: " + mBanner);
         return mBanner;
     }
 }

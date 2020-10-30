@@ -3,6 +3,7 @@
     <string name="sports_title_placeholder">Sport</string>
     <string name="news_title_placeholder">News</string>
     <string name="sports_info_placeholder">Info</string>
+    <string name="sports_banner_description">Sports banner</string>
 
     <string-array name="sports_titles">
         <item>Baseball</item>
