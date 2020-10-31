@@ -1,6 +1,8 @@
 package com.example.materialme;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +34,28 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         initializeData();
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(
+                new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN,
+                        ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                    @Override
+                    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                        Log.d("MyLog", "Move");
+                        int from = viewHolder.getAdapterPosition();
+                        int to = target.getAdapterPosition();
+                        Collections.swap(mSportsData, from, to);
+                        mAdapter.notifyItemMoved(from, to);
+                        return true;
+                    }
+
+                    @Override
+                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                        Log.d("MyLog", "Swiped - direction: " + direction);
+                        int position = viewHolder.getAdapterPosition();
+                        mSportsData.remove(position);
+                        mAdapter.notifyItemRemoved(position);
+                    }
+                });
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
     /**
