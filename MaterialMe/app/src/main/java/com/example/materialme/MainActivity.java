@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ArrayList<Sport> mSportsData;
     private SportsAdapter mAdapter;
+    public static final String SELECTED_SPORT_ITEM = "SELECTED_SPORT_ITEM";
+    public static final String SAVED_SPORTS_DATA = "SAVE_SPORTS_DATA";
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(SAVED_SPORTS_DATA, mSportsData);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new SportsAdapter(mSportsData, this);
         mRecyclerView.setAdapter(mAdapter);
 
-        initializeData();
+        initializeOrRecoverData(savedInstanceState);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(
                 new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN,
                         ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -58,6 +69,20 @@ public class MainActivity extends AppCompatActivity {
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
+    private void initializeOrRecoverData(Bundle savedInstanceState) {
+        if(savedInstanceState != null && !savedInstanceState.getParcelableArrayList(SAVED_SPORTS_DATA).isEmpty())
+            recoverData(savedInstanceState);
+        else
+            initializeData();
+    }
+
+    private void recoverData(Bundle savedInstanceState) {
+        ArrayList<Sport> savedSportsData = savedInstanceState.getParcelableArrayList(SAVED_SPORTS_DATA);
+        mSportsData.clear();
+        mSportsData.addAll(savedSportsData);
+    }
+
+
     /**
      * Method for initializing the sports data from resources.
      */
@@ -81,5 +106,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Notify the adapter of the change
         mAdapter.notifyDataSetChanged();
+    }
+
+    public void loadOriginalNews(View view) {
+        initializeData();
     }
 }

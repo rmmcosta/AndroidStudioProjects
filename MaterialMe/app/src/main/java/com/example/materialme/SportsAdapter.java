@@ -1,8 +1,9 @@
 package com.example.materialme;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -45,7 +46,7 @@ public class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.SportsView
         return mSportsData.size();
     }
 
-    public class SportsViewHolder extends RecyclerView.ViewHolder {
+    public class SportsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvSportsTitle, tvNewsTitle, tvSportsInfo;
         ImageView ivSportsBanner;
 
@@ -55,6 +56,14 @@ public class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.SportsView
             tvSportsTitle = itemView.findViewById(R.id.tvSportsTitle);
             tvNewsTitle = itemView.findViewById(R.id.tvNewsTitle);
             tvSportsInfo = itemView.findViewById(R.id.tvSportsInfo);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(mContext, DetailActivity.class);
+            intent.putExtra(MainActivity.SELECTED_SPORT_ITEM, mSportsData.get(getAdapterPosition()));
+            mContext.startActivity(intent);
         }
     }
 }
