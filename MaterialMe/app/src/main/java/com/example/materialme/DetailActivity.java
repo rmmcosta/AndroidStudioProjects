@@ -25,7 +25,8 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void loadData(Intent intent) {
-        Sport sport = (Sport) intent.getSerializableExtra(MainActivity.SELECTED_SPORT_ITEM);
+        Bundle data = intent.getExtras();
+        Sport sport = data.getParcelable(MainActivity.SELECTED_SPORT_ITEM);
         tvSportsTitle.setText(sport.getSportsTitle());
         tvSportsInfo.setText(sport.getSportsInfo());
         Glide.with(this).load(sport.getBanner()).into(ivSportsBanner);
