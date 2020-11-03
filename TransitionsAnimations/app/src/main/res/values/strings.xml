@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Transitions &amp; Animations</string>
+    <string name="red_circle_description">red circle</string>
+    <string name="blue_rectangle_description">blue rectangle</string>
+    <string name="yellow_square_description">yellow square</string>
+    <string name="android_robot_description">android robot</string>
+</resources>
