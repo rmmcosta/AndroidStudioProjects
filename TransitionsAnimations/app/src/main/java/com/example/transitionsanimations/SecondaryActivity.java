@@ -3,6 +3,7 @@ package com.example.transitionsanimations;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
@@ -22,9 +23,9 @@ public class SecondaryActivity extends AppCompatActivity {
 
     public void goBack(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-//        Pair<View, String> animatedAndroid = Pair.create(ivAndroid, "swap");
-//        Pair<View, String> animatedCircle = Pair.create(ivCircle, "swap");
-        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this, ivAndroid, "swap");
-        startActivity(intent, activityOptionsCompat.toBundle());
+        Pair<View, String> animatedAndroid = Pair.create(ivAndroid, "swap");
+        Pair<View, String> animatedCircle = Pair.create(ivCircle, "swap");
+        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this, animatedAndroid, animatedCircle);
+        startActivity(intent, activityOptions.toBundle());
     }
 }

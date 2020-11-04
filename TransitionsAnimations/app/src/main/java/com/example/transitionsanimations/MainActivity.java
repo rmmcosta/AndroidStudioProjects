@@ -1,30 +1,29 @@
 package com.example.transitionsanimations;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
-
 import android.animation.ObjectAnimator;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Explode;
-import android.transition.Fade;
 import android.transition.Slide;
 import android.transition.Transition;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TRANSITION_STATE = "TRANSITION_STATE";
-    private ImageView ivAndroid;
+    private ImageView ivAndroid, ivCircle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ivAndroid = findViewById(R.id.ivAndroid);
+        ivCircle = findViewById(R.id.ivCircle);
     }
 
     public void explode(View view) {
@@ -56,8 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void swap(View view) {
         Intent intent = new Intent(this, SecondaryActivity.class);
-        ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(MainActivity.this, ivAndroid, "swap");
+        Pair<View, String> pAndroid = Pair.create(ivAndroid, "swap");
+        Pair<View, String> pCircle = Pair.create(ivCircle, "swap");
+        ActivityOptions options = ActivityOptions.
+                makeSceneTransitionAnimation(this, pAndroid, pCircle);
         startActivity(intent, options.toBundle());
     }
 }

@@ -7,6 +7,17 @@
     android:layout_gravity="center"
     tools:context=".SecondaryActivity">
 
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:textSize="34sp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_columnSpan="2"
+        android:text="@string/secondary_activity_title" />
+
     <ImageView
         android:id="@+id/ivAndroid"
         style="@style/main_icons"
@@ -20,7 +31,7 @@
     <ImageView
         android:id="@+id/ivRectangle"
         style="@style/main_icons"
-        android:layout_row="0"
+        android:layout_row="1"
         android:layout_column="1"
         android:contentDescription="@string/blue_rectangle_description"
         app:srcCompat="@drawable/ic_rectangle" />
@@ -28,7 +39,7 @@
     <ImageView
         android:id="@+id/ivCircle"
         style="@style/main_icons"
-        android:layout_row="0"
+        android:layout_row="2"
         android:layout_column="0"
         android:contentDescription="@string/red_circle_description"
         android:transitionName="swap"
@@ -37,7 +48,7 @@
     <ImageView
         android:id="@+id/ivSquare"
         style="@style/main_icons"
-        android:layout_row="1"
+        android:layout_row="2"
         android:layout_column="1"
         android:contentDescription="@string/yellow_square_description"
         app:srcCompat="@drawable/ic_square" />
