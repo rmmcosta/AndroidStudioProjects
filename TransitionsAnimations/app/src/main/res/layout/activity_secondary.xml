@@ -5,43 +5,40 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/ivCircle"
-        style="@style/main_icons"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:onClick="explode"
-        android:transitionName="swap"
-        android:contentDescription="@string/red_circle_description"
-        app:srcCompat="@drawable/ic_circle" />
-
-    <ImageView
-        android:id="@+id/ivRectangle"
-        style="@style/main_icons"
-        android:layout_row="0"
-        android:layout_column="1"
-        android:onClick="slide"
-        android:contentDescription="@string/blue_rectangle_description"
-        app:srcCompat="@drawable/ic_rectangle" />
+    tools:context=".SecondaryActivity">
 
     <ImageView
         android:id="@+id/ivAndroid"
         style="@style/main_icons"
         android:layout_row="1"
         android:layout_column="0"
-        android:transitionName="swap"
-        android:onClick="swap"
         android:contentDescription="@string/android_robot_description"
+        android:onClick="goBack"
+        android:transitionName="swap"
         app:srcCompat="@drawable/ic_baseline_android_24" />
+
+    <ImageView
+        android:id="@+id/ivRectangle"
+        style="@style/main_icons"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:contentDescription="@string/blue_rectangle_description"
+        app:srcCompat="@drawable/ic_rectangle" />
+
+    <ImageView
+        android:id="@+id/ivCircle"
+        style="@style/main_icons"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:contentDescription="@string/red_circle_description"
+        android:transitionName="swap"
+        app:srcCompat="@drawable/ic_circle" />
 
     <ImageView
         android:id="@+id/ivSquare"
         style="@style/main_icons"
         android:layout_row="1"
         android:layout_column="1"
-        android:onClick="rotate"
         android:contentDescription="@string/yellow_square_description"
         app:srcCompat="@drawable/ic_square" />
 
