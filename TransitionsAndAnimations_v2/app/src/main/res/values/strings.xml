@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TransitionsAndAnimations_v2</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="image_android_robot_description">Image Android Robot</string>
+    <string name="image_square_description">Image Square</string>
+    <string name="image_rectangle_description">Image Rectangle</string>
+    <string name="image_circle_description">Image Circle</string>
+    <string name="circle_animation_name">swapCircle</string>
+    <string name="droid_animation_name">swapDroid</string>
+</resources>

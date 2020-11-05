@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/ivDroid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/anchor"
+        android:layout_marginEnd="@dimen/animations_margin"
+        android:layout_marginBottom="@dimen/animations_margin"
+        android:layout_toStartOf="@id/anchor"
+        android:contentDescription="@string/image_circle_description"
+        android:foregroundGravity="center"
+        android:transitionName="@string/droid_animation_name"
+        app:srcCompat="@drawable/ic_android_black_24dp" />
+
+    <ImageView
+        android:id="@+id/ivRectangle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/anchor"
+        android:layout_marginStart="@dimen/animations_margin"
+        android:layout_marginBottom="@dimen/animations_margin_plus_half_size"
+        android:layout_toEndOf="@id/anchor"
+        android:contentDescription="@string/image_rectangle_description"
+        android:foregroundGravity="center"
+        app:srcCompat="@drawable/ic_rectangle" />
+
+    <View
+        android:id="@+id/anchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/ivCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/anchor"
+        android:layout_marginTop="@dimen/animations_margin"
+        android:layout_marginEnd="@dimen/animations_margin"
+        android:layout_toStartOf="@id/anchor"
+        android:contentDescription="@string/image_android_robot_description"
+        android:foregroundGravity="center"
+        android:transitionName="@string/circle_animation_name"
+        app:srcCompat="@drawable/ic_circle" />
+
+    <ImageView
+        android:id="@+id/ivSquare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/anchor"
+        android:layout_marginStart="@dimen/animations_margin"
+        android:layout_marginTop="@dimen/animations_margin"
+        android:layout_toEndOf="@id/anchor"
+        android:contentDescription="@string/image_square_description"
+        android:foregroundGravity="center"
+        app:srcCompat="@drawable/ic_square" />
+</RelativeLayout>
