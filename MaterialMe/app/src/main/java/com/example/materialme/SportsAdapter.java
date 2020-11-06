@@ -1,8 +1,11 @@
 package com.example.materialme;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.transition.Explode;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +22,12 @@ import java.util.ArrayList;
 public class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.SportsViewHolder> {
     private ArrayList<Sport> mSportsData;
     private Context mContext;
+    private Activity mActivity;
 
-    public SportsAdapter(ArrayList<Sport> mSportsData, Context mContext) {
+    public SportsAdapter(ArrayList<Sport> mSportsData, Context mContext, Activity activity) {
         this.mSportsData = mSportsData;
         this.mContext = mContext;
+        this.mActivity = activity;
     }
 
     @NonNull
@@ -62,8 +67,11 @@ public class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.SportsView
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(mContext, DetailActivity.class);
+            Pair<View, String> p1 = Pair.create(ivSportsBanner, mContext.getString(R.string.banner_animation_name));
+            Pair<View, String> p2 = Pair.create(tvSportsTitle, mContext.getString(R.string.title_animation_name));
+            ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(mActivity, p1, p2);
             intent.putExtra(MainActivity.SELECTED_SPORT_ITEM, mSportsData.get(getAdapterPosition()));
-            mContext.startActivity(intent);
+            mContext.startActivity(intent, activityOptions.toBundle());
         }
     }
 }

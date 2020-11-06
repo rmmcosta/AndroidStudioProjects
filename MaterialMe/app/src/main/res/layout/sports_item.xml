@@ -15,7 +15,8 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:contentDescription="@string/sports_banner_description"
-            android:src="@drawable/img_tennis" />
+            android:src="@drawable/img_tennis"
+            android:transitionName="@string/banner_animation_name" />
 
         <TextView
             android:id="@+id/tvSportsTitle"
@@ -26,7 +27,8 @@
             android:layout_alignBottom="@id/ivSportsBanner"
             android:padding="@dimen/list_item_padding"
             android:text="@string/sports_title_placeholder"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            android:transitionName="@string/title_animation_name" />
 
         <TextView
             android:id="@+id/tvNewsTitle"
@@ -34,9 +36,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ivSportsBanner"
-            android:textColor="?android:textColorSecondary"
             android:padding="@dimen/list_item_padding"
-            android:text="@string/news_title_placeholder" />
+            android:text="@string/news_title_placeholder"
+            android:textColor="?android:textColorSecondary" />
 
         <TextView
             android:id="@+id/tvSportsInfo"

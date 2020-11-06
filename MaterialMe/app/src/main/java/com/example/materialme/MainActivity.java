@@ -6,10 +6,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 
@@ -41,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         mSportsData = new ArrayList<>();
 
-        mAdapter = new SportsAdapter(mSportsData, this);
+        mAdapter = new SportsAdapter(mSportsData, this, this);
         mRecyclerView.setAdapter(mAdapter);
 
         initializeOrRecoverData(savedInstanceState);
