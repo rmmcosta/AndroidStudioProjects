@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/tvSportsTitle_Detail"
-        style="@style/TextAppearance.AppCompat.Headline"
+        style="@style/card_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/ivSportsBanner_Detail"
@@ -29,7 +29,7 @@
 
     <TextView
         android:id="@+id/tvNewsTitle_Detail"
-        style="@style/TextAppearance.AppCompat.Subhead"
+        style="@style/card_subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivSportsBanner_Detail"
@@ -39,7 +39,7 @@
 
     <TextView
         android:id="@+id/tvSportsInfo_Detail"
-        style="@style/TextAppearance.AppCompat.Subhead"
+        style="@style/card_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvNewsTitle_Detail"
@@ -52,6 +52,7 @@
         android:layout_below="@id/tvSportsInfo_Detail">
 
         <TextView
+            style="@style/card_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/detail_padding"

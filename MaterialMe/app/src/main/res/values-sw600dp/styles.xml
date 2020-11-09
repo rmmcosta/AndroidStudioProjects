@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="card_title">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="card_subtitle">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="card_text">
+        <item name="android:textSize">26sp</item>
+    </style>
+</resources>

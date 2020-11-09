@@ -2,6 +2,7 @@ package com.example.materialme;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.rvSports);
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        int gridColumnCount = getResources().getInteger(R.integer.grid_column_count);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, gridColumnCount));
 
         mSportsData = new ArrayList<>();
 
@@ -43,9 +45,20 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         initializeOrRecoverData(savedInstanceState);
+        int swipeDirs;
+        if (gridColumnCount == 1) {
+            swipeDirs = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+        } else {
+            swipeDirs = 0;
+        }
+        int dragDirs;
+        if (gridColumnCount == 1) {
+            dragDirs = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+        } else {
+            dragDirs = ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+        }
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(
-                new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN,
-                        ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                new ItemTouchHelper.SimpleCallback(dragDirs, swipeDirs) {
                     @Override
                     public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                         Log.d("MyLog", "Move");
@@ -68,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeOrRecoverData(Bundle savedInstanceState) {
-        if(savedInstanceState != null && !savedInstanceState.getParcelableArrayList(SAVED_SPORTS_DATA).isEmpty())
+        if (savedInstanceState != null && !savedInstanceState.getParcelableArrayList(SAVED_SPORTS_DATA).isEmpty())
             recoverData(savedInstanceState);
         else
             initializeData();

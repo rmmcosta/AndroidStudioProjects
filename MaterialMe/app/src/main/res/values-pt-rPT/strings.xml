@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Notícias Desportivas</string>
+    <string name="sports_title_placeholder">Desporto</string>
+    <string name="news_title_placeholder">Notícias</string>
+    <string name="sports_info_placeholder">Informação</string>
+    <string name="sports_banner_description">Imagem ilustrativa</string>
+    <string name="sport_info_detail">O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão.
+        O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500,
+        quando uma misturou os caracteres de um texto para criar um espécime de livro.
+        Este texto não só sobreviveu 5 séculos, mas também o salto para a tipografia electrónica, mantendo-se essencialmente inalterada.
+        Foi popularizada nos anos 60 com a disponibilização das folhas de Letraset, que continham passagens com Lorem Ipsum,
+        e mais recentemente com os programas de publicação como o Aldus PageMaker que incluem versões do Lorem Ipsum.
+        Ao contrário da crença popular, o Lorem Ipsum não é simplesmente texto aleatório. Tem raízes numa peça de literatura clássica em Latim, de 45 AC,
+        tornando-o com mais de 2000 anos. Richard McClintock, um professor de Latim no Colégio Hampden-Sydney, na Virgínia,
+        procurou uma das palavras em Latim mais obscuras (consectetur) numa passagem Lorem Ipsum, e atravessando as cidades do mundo na literatura clássica, descobriu a sua origem.
+        Lorem Ipsum vem das secções 1.10.32 e 1.10.33 do "de Finibus Bonorum et Malorum" (Os Extremos do Bem e do Mal), por Cícero, escrito a 45AC.
+        Este livro é um tratado na teoria da ética, muito popular durante a Renascença. A primeira linha de Lorem Ipsum, "Lorem ipsum dolor sit amet..." aparece de uma linha na secção 1.10.32.
+        O pedaço mais habitual do Lorem Ipsum usado desde os anos 1500 é reproduzido abaixo para os interessados.
+        As secções 1.10.32 e 1.10.33 do "de Finibus Bonorum et Malorum" do Cícero também estão reproduzidos na sua forma original,
+        acompanhados pela sua tradução em Inglês, versões da tradução de 1914 por H. Rackham.</string>
+    <string name="fab_description">Retornar a lista original</string>
+
+    <string-array name="sports_titles">
+        <item>Basebol</item>
+        <item>Badminton</item>
+        <item>Basquetebol</item>
+        <item>Bowling</item>
+        <item>Ciclismo</item>
+        <item>Golf</item>
+        <item>Corrida</item>
+        <item>Futebol</item>
+        <item>Natação</item>
+        <item>Ténis de mesa</item>
+        <item>Ténis</item>
+    </string-array>
+
+    <string-array name="sports_info">
+        <item>Aqui estão as notícias do Basebol!</item>
+        <item>Aqui estão as notícias de Badminton!</item>
+        <item>Aqui estão as notícias de Basquetebol!</item>
+        <item>Aqui estão as notícias de Bowling!</item>
+        <item>Aqui estão as notícias de Ciclismo!</item>
+        <item>Aqui estão as notícias de Golf!</item>
+        <item>Aqui estão as notícias de Corrida!</item>
+        <item>Aqui estão as notícias de Futebol!</item>
+        <item>Aqui estão as notícias de Natação!</item>
+        <item>Aqui estão as notícias de Ténis de mesa!</item>
+        <item>Aqui estão as notícias de Ténis!</item>
+    </string-array>
+</resources>
