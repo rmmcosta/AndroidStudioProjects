@@ -6,4 +6,5 @@
     <dimen name="detail_margin_top">6dp</dimen>
     <dimen name="detail_padding">8dp</dimen>
     <dimen name="fab_margin">6dp</dimen>
+    <dimen name="fab_button_elevation">20dp</dimen>
 </resources>

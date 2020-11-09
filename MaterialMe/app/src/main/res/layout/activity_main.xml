@@ -26,6 +26,7 @@
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
+        android:elevation="@dimen/fab_button_elevation"
         android:clickable="true"
         android:contentDescription="@string/fab_description"
         android:focusable="true"
