@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Phone Number Spinner Espresso</string>
+    <string name="phone_hints">input your phone</string>
+
+    <string-array name="phone_types">
+        <item>Home</item>
+        <item>Work</item>
+        <item>Mobile</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="animals">
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Rat</item>
+        <item>Pig</item>
+        <item>Snake</item>
+        <item>Dunk</item>
+        <item>Horse</item>
+    </string-array>
+</resources>
