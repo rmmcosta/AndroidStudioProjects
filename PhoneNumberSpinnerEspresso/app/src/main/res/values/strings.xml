@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Phone Number Spinner Espresso</string>
     <string name="phone_hints">input your phone</string>
+    <string name="result_placeholder">Input a number and select a phone type</string>
 
     <string-array name="phone_types">
-        <item>Home</item>
-        <item>Work</item>
-        <item>Mobile</item>
-        <item>Other</item>
+        <item name="phone_type_home">Home</item>
+        <item name="phone_type_work">Work</item>
+        <item name="phone_type_mobile">Mobile</item>
+        <item name="phone_type_other">Other</item>
     </string-array>
 
     <string-array name="animals">

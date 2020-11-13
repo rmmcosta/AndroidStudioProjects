@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             String phone = String.valueOf(etPhone.getText());
             if (phone.isEmpty()) {
-                tvResult.setText("");
+                tvResult.setText(R.string.result_placeholder);
                 return;
             }
             String[] phoneTypes = getResources().getStringArray(R.array.phone_types);
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onNothingSelected(AdapterView<?> adapterView) {
-            tvResult.setText("");
+            tvResult.setText(R.string.result_placeholder);
         }
     }
 
