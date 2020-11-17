@@ -14,7 +14,7 @@ import java.util.LinkedList;
 public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordViewHolder> {
 
     private final LinkedList<String> mWordList;
-    private LayoutInflater mLayoutInflater;
+    private final LayoutInflater mLayoutInflater;
 
     public WordListAdapter(Context context, LinkedList<String> mWordList) {
         mLayoutInflater = LayoutInflater.from(context);

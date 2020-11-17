@@ -40,4 +40,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_top_default" />
 
+    <TextView
+        android:id="@+id/tvSelectedAnimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_default" />
+
 </LinearLayout>

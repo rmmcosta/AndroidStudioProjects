@@ -1,6 +1,8 @@
 package com.example.phonenumberspinnerespresso;
 
 import android.content.Context;
+import android.util.Log;
+import android.widget.TextView;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -32,7 +34,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class MainActivityTest {
     ViewInteraction spinner;
     ViewInteraction input;
     ViewInteraction result;
@@ -91,21 +93,33 @@ public class ExampleInstrumentedTest {
     @Test
     public void correctResult() {
         input.check(matches(isDisplayed()));
-        final String phone = "+351914423167";
-        input.perform(typeText(phone));
-        result.check(matches(withText(R.string.result_placeholder)));
+        final String PHONE = "+351914423167";
+        input.perform(typeText(PHONE));
+        input.check(matches(withText(PHONE)));
         AtomicReference<AtomicReferenceArray<String>> phoneTypes = new AtomicReference<>(new AtomicReferenceArray<>(new String[0]));
         activityScenarioRule.getScenario().onActivity(activity -> {
             phoneTypes.set(new AtomicReferenceArray<>(activity.getResources().getStringArray(R.array.phone_types)));
 
         });
-        for (int i = 0; i < phoneTypes.get().length(); i++) {
+        //we need to start counting from the end because the first item is already selected
+        //and when clicked again it will no trigger the logic to set the text of the text view
+        //with the phone number
+        for (int i = phoneTypes.get().length() - 1; i > 0; i--) {
             String eachType = phoneTypes.get().get(i);
             spinner.check(matches(isDisplayed()));
             spinner.perform(click());
-            //onData(is(eachType)).perform(click());
-            onData(allOf(is(instanceOf(String.class)), is(eachType))).perform(click());
-            result.check(matches(withText(containsString(String.format("%s %s", phone, eachType)))));
+            onData(is(eachType)).perform(click());
+            result.check(matches(withText(String.format("%s %s", PHONE, eachType))));
         }
+    }
+
+    @Test
+    public void selectAnimal() {
+        final String ANIMAL = "Snake";
+        ViewInteraction animalSpinner = onView(withId(R.id.spinnerAnimals));
+        animalSpinner.perform(click());
+        onData(is(ANIMAL)).perform(click());
+        ViewInteraction tvSelectedAnimal = onView(withId(R.id.tvSelectedAnimal));
+        tvSelectedAnimal.check(matches(withText(ANIMAL)));
     }
 }
