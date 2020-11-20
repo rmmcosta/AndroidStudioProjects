@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private final String SAVED_WORDS_KEY = "SAVED_WORDS_KEY";
     public LinkedList<String> mWordList = new LinkedList<>();
     private RecyclerView mRecyclerView;
-    private final int INITIAL_WORDS_NUM = 20;
+    public static final int INITIAL_WORDS_NUM = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         if (mWordList.isEmpty())
             initializeWordsList(INITIAL_WORDS_NUM);
 
-        mRecyclerView = findViewById(R.id.RecyclerView);
+        mRecyclerView = findViewById(R.id.rvWords);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         setAdapter();
     }

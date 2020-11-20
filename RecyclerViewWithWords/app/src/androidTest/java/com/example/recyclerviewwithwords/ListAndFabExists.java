@@ -29,19 +29,19 @@ public class ListAndFabExists {
     public void listAndFabExists() {
         ViewInteraction textView = onView(
                 allOf(withId(R.id.tvWordListItem), withText("Word 0"),
-                        withParent(withParent(withId(R.id.RecyclerView))),
+                        withParent(withParent(withId(R.id.rvWords))),
                         isDisplayed()));
         textView.check(matches(withText("Word 0")));
 
         ViewInteraction textView2 = onView(
                 allOf(withId(R.id.tvWordListItem), withText("Word 1"),
-                        withParent(withParent(withId(R.id.RecyclerView))),
+                        withParent(withParent(withId(R.id.rvWords))),
                         isDisplayed()));
         textView2.check(matches(withText("Word 1")));
 
         ViewInteraction textView3 = onView(
                 allOf(withId(R.id.tvWordListItem), withText("Word 10"),
-                        withParent(withParent(withId(R.id.RecyclerView))),
+                        withParent(withParent(withId(R.id.rvWords))),
                         isDisplayed()));
         textView3.check(matches(withText("Word 10")));
 
