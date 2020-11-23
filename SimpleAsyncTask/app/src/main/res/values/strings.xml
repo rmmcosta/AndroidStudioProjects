@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Simple Async Task</string>
+    <string name="btn_start_task">START TASK</string>
+    <string name="operation">Awake at least after sleeping for 900ms</string>
+</resources>
