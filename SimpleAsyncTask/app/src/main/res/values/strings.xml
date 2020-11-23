@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Simple Async Task</string>
     <string name="btn_start_task">START TASK</string>
-    <string name="operation">Awake at least after sleeping for 900ms</string>
+    <string name="operation">I am ready to start work!</string>
+    <string name="async_task_result">Awake at least after sleeping for %d milliseconds</string>
+    <string name="while_running_async_task">Napping for %d milliseconds...</string>
 </resources>
