@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fake Download with Async Task</string>
+    <string name="help_text">Try async tasks by clicking the download button</string>
+    <string name="download_button">Download</string>
+    <string name="download_finish">Downloaded %d files with success</string>
+    <string name="download_progress">Downloading, file %d</string>
+</resources>
