@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Async Progress With Kotlin</string>
+    <string name="app_introduction">Try the async download by clicking the button below</string>
+    <string name="download_btn">Download</string>
+</resources>
