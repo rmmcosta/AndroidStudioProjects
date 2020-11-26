@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Three Approaches 2 Async Tasks</string>
+    <string name="title">Welcome to three ways of handling with async tasks</string>
+    <string name="async_task_btn">Async Task (Deprecated)</string>
+    <string name="handler_thread_btn">Handler Thread</string>
+    <string name="executors_btn">Executors</string>
+    <string name="download_files_success">%d files were downloaded with success!</string>
+    <string name="progress_log">Download file %d</string>
+    <string name="cancel_download_btn">Cancel</string>
+</resources>
