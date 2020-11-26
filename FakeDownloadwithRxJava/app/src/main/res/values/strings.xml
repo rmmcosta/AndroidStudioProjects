@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Fake Download with RxJava</string>
+    <string name="help_text">Try rx java replacing async tasks by clicking the download button</string>
+    <string name="download_button">Download</string>
+    <string name="download_finish">Downloaded %d files with success</string>
+    <string name="download_progress">Downloading, file %d</string>
+    <string name="download_with_progress">Download with progress</string>
+</resources>
