@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Workout Fragments</string>
+    <string name="workout_name_placeholder">The Workout</string>
+    <string name="workout_description_placeholder">This Workout is Awesome</string>
+</resources>
