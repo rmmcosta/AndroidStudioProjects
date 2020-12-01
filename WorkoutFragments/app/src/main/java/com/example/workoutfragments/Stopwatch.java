@@ -2,13 +2,17 @@ package com.example.workoutfragments;
 
 import androidx.annotation.NonNull;
 
-public class Stopwatch {
+import java.io.Serializable;
+
+public class Stopwatch implements Serializable {
     private int seconds;
     private int minutes;
     private int hours;
     private static final int MAX_SECONDS = 59;
     private static final int MAX_MINUTES = 59;
     private static final int MAX_HOURS = 99;
+    private boolean isCounting;
+    private boolean wasCounting;
 
     public Stopwatch(int seconds, int minutes, int hours) {
         this.seconds = seconds;
@@ -46,6 +50,24 @@ public class Stopwatch {
         seconds = 0;
         minutes = 0;
         hours = 0;
+    }
+
+    public boolean isCounting() {
+        return isCounting;
+    }
+
+    public void startCounting() {
+        wasCounting = isCounting;
+        isCounting = true;
+    }
+
+    public void stopCounting() {
+        wasCounting = isCounting;
+        isCounting = false;
+    }
+
+    public void resume() {
+        isCounting = wasCounting;
     }
 
     @NonNull

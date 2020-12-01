@@ -1,8 +1,9 @@
 package com.example.workoutfragments;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,49 +14,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class StopwatchFragment extends Fragment {
 
     private Stopwatch stopwatch;
-    private boolean isStopwatchCounting;
     private static int INC_STEP_IN_MS = 1000;
     private TextView tvStopwatch;
     private Button btnStart;
     private Button btnStop;
     private Button btnReset;
     private static final String LOG_TAG = "STOPWATCH_FRAGMENT";
-    AsyncStopwatch asyncStopwatch;
-
-    private class AsyncStopwatch extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            Log.d(LOG_TAG, "do in background");
-            try {
-                while (isStopwatchCounting) {
-                    Thread.sleep(INC_STEP_IN_MS);
-                    publishProgress();
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } finally {
-                return null;
-            }
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
-            if (!isStopwatchCounting) {
-                return;
-            }
-            stopwatch.incSeconds();
-            updateStopwatch();
-        }
-    }
-
-    private void updateStopwatch() {
-        tvStopwatch.setText(stopwatch.toString());
-    }
-
+    private static final String STOPWATCH_STATE_KEY = "STOPWATCH_STATE_KEY";
+    private Handler handler;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,7 +46,11 @@ public class StopwatchFragment extends Fragment {
         btnStop.setOnClickListener(view1 -> stopWatch());
         btnReset.setOnClickListener(view1 -> resetWatch());
         tvStopwatch = view.findViewById(R.id.tvStopwatch);
-        stopwatch = new Stopwatch(0, 0, 0);
+        if (savedInstanceState != null && savedInstanceState.getSerializable(STOPWATCH_STATE_KEY) != null) {
+            stopwatch = (Stopwatch) savedInstanceState.getSerializable(STOPWATCH_STATE_KEY);
+        } else {
+            stopwatch = new Stopwatch(0, 0, 0);
+        }
         updateStopwatch();
         return view;
     }
@@ -82,20 +58,69 @@ public class StopwatchFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+        startHandler();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        handler.removeCallbacksAndMessages(null);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        stopwatch.stopCounting();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        stopwatch.resume();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(STOPWATCH_STATE_KEY, stopwatch);
     }
 
     private void startWatch() {
-        isStopwatchCounting = true;
-        asyncStopwatch = new AsyncStopwatch();
-        asyncStopwatch.execute();
+        stopwatch.startCounting();
     }
 
     private void stopWatch() {
-        isStopwatchCounting = false;
+        stopwatch.stopCounting();
     }
 
     private void resetWatch() {
         stopwatch.reset();
         updateStopwatch();
+    }
+
+    private void startHandler() {
+        handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Log.d(LOG_TAG, "run runnable");
+                if (stopwatch.isCounting()) {
+                    incStopwatchAndUpdateUI();
+                }
+                handler.postDelayed(this, INC_STEP_IN_MS);
+            }
+        };
+        handler.post(runnable);
+    }
+
+    private void incStopwatchAndUpdateUI() {
+        if (stopwatch.isCounting()) {
+            stopwatch.incSeconds();
+            updateStopwatch();
+        }
+    }
+
+    private void updateStopwatch() {
+        tvStopwatch.setText(stopwatch.toString());
     }
 }
