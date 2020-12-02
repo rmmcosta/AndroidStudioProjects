@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <item
         android:id="@+id/createOrderMenuOption"
         android:icon="@drawable/ic_action_create_order"
         android:orderInCategory="1"
+        android:showAsAction="ifRoom"
         android:title="@string/create_order_menu_option"
+        app:showAsAction="ifRoom"
+        tools:ignore="AppCompatResource" />
+    <item
+        android:id="@+id/shareActionMenuOption"
+        app:actionProviderClass="android.widget.ShareActionProvider"
+        android:actionProviderClass="android.widget.ShareActionProvider"
+        android:title="@string/share_option_menu"
+        android:orderInCategory="2"
         android:showAsAction="ifRoom"
         app:showAsAction="ifRoom"
         tools:ignore="AppCompatResource" />
     <item
         android:id="@+id/settingsMenuOption"
         android:orderInCategory="100"
-        android:title="@string/settings_menu_option"
         android:showAsAction="never"
+        android:title="@string/settings_menu_option"
         app:showAsAction="never"
         tools:ignore="AppCompatResource" />
 </menu>

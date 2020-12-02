@@ -2,4 +2,6 @@
     <string name="app_name">Bits and Pizzas</string>
     <string name="create_order_menu_option">Create Order</string>
     <string name="settings_menu_option">Settings</string>
+    <string name="share_option_menu">Share</string>
+    <string name="share">anotherShare</string>
 </resources>

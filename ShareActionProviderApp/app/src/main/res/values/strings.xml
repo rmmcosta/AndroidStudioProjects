@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Share Action Provider App</string>
+    <string name="share_option_menu">Share</string>
+</resources>
