@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BitsAndPizzas">
+        <activity
+            android:name=".OrderActivity"
+            android:label="@string/create_order_menu_option"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/CreateOrder" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
