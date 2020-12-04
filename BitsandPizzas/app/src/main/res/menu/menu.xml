@@ -12,8 +12,8 @@
         tools:ignore="AppCompatResource" />
     <item
         android:id="@+id/shareActionMenuOption"
-        app:actionProviderClass="android.widget.ShareActionProvider"
-        android:actionProviderClass="android.widget.ShareActionProvider"
+        app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"
+        android:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"
         android:title="@string/share_option_menu"
         android:orderInCategory="2"
         android:showAsAction="ifRoom"

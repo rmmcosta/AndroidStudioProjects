@@ -4,4 +4,28 @@
     <string name="settings_menu_option">Settings</string>
     <string name="share_option_menu">Share</string>
     <string name="share">anotherShare</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="top_fragment_title">Top Fragment</string>
+    <string name="pizzas_fragment_title">Pizzas Fragment</string>
+    <string name="pasta_fragment_title">Pasta Fragment</string>
+    <string name="stores_fragment_title">Stores Fragment</string>
+    <string name="home_nav_item">Home</string>
+    <string name="pasta_nav_item">Pasta</string>
+    <string name="pizzas_nav_item">Pizzas</string>
+    <string name="stores_nav_item">Stores</string>
+
+    <string-array name="pizzas">
+        <item>Maragarita</item>
+        <item>Napolitana</item>
+        <item>Romana</item>
+        <item>4 Cheeses</item>
+        <item>Diavola</item>
+        <item>Funghi</item>
+    </string-array>
+    <string-array name="pastas">
+        <item>Spaghetti</item>
+        <item>Carbonara</item>
+        <item>Lasagna</item>
+    </string-array>
 </resources>
