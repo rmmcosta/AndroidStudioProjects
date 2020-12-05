@@ -14,6 +14,7 @@
     <string name="pasta_nav_item">Pasta</string>
     <string name="pizzas_nav_item">Pizzas</string>
     <string name="stores_nav_item">Stores</string>
+    <string name="new_order_title">Input the new order details</string>
 
     <string-array name="pizzas">
         <item>Maragarita</item>
@@ -27,5 +28,11 @@
         <item>Spaghetti</item>
         <item>Carbonara</item>
         <item>Lasagna</item>
+    </string-array>
+    <string-array name="stores">
+        <item>Amadora</item>
+        <item>Alverca</item>
+        <item>Porto</item>
+        <item>Guimarães</item>
     </string-array>
 </resources>

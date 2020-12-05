@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
             if (itemId == R.id.niPasta) {
                 fragment = new PastaFragment();
             } else if (itemId == R.id.niPizzas) {
-                fragment = new PizzasFragment();
+                fragment = new PizzaFragment();
             } else if (itemId == R.id.niStores) {
-                fragment = new StoresFragment();
+                fragment = new StoreFragment();
             } else {
                 fragment = new TopFragment();
             }

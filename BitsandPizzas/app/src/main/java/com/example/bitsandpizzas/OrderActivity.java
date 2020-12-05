@@ -1,9 +1,10 @@
 package com.example.bitsandpizzas;
 
-import android.app.Activity;
 import android.os.Bundle;
 
-public class OrderActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class OrderActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

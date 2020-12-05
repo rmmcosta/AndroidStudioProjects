@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class PastaFragment extends Fragment {
+public class StoreFragment extends Fragment {
 
-    public PastaFragment() {
+    public StoreFragment() {
     }
 
     @Override
@@ -29,9 +29,9 @@ public class PastaFragment extends Fragment {
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
-           recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            String[] pastas = getResources().getStringArray(R.array.pastas);
-            recyclerView.setAdapter(new PastaRecyclerViewAdapter(pastas));
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            String[] stores = getResources().getStringArray(R.array.stores);
+            recyclerView.setAdapter(new StoreRecyclerViewAdapter(stores));
         }
         return view;
     }
