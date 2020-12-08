@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WebSource</string>
+    <string name="enter_url_label">Enter URL:</string>
+    <string name="input_url_hint">select http or https and enter here the url</string>
+    <string name="get_page_source_btn">Get page source</string>
+    <string name="loading_text">loading...</string>
+    <string-array name="web_protocols">
+        <item>http://</item>
+        <item>https://</item>
+    </string-array>
+</resources>
