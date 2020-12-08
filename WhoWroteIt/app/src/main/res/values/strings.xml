@@ -2,4 +2,5 @@
     <string name="app_name">WhoWroteIt</string>
     <string name="input_book_label">Enter a book name or part of the name:</string>
     <string name="search_books_button">Search Books</string>
+    <string name="btn_loading">loading...</string>
 </resources>

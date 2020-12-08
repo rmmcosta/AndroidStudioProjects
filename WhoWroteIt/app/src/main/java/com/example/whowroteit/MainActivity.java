@@ -1,13 +1,21 @@
 package com.example.whowroteit;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,19 +31,21 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
 
     private static final String BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
     private EditText etBookName;
     private TextView tvAuthor;
     private TextView tvTitle;
     private TextView tvSubtitle;
+    private Button btnSearch;
     private static final String LOG_TAG = "LOG_MAIN_ACTIVITY";
     private static final String JSON_ITEMS_KEY = "items";
     private static final String JSON_TITLE_KEY = "title";
     private static final String JSON_SUBTITLE_KEY = "subtitle";
     private static final String JSON_AUTHOR_KEY = "authors";
     private static final String JSON_VOLUME_INFO_KEY = "volumeInfo";
+    private static final String BUNDLE_QUERY_STRING = "QUERY_STRING";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +55,76 @@ public class MainActivity extends AppCompatActivity {
         tvAuthor = findViewById(R.id.tvAuthor);
         tvTitle = findViewById(R.id.tvTitle);
         tvSubtitle = findViewById(R.id.tvSubtitle);
+        btnSearch = findViewById(R.id.btnSearchBooks);
+        if (LoaderManager.getInstance(this) != null) {
+            LoaderManager.getInstance(this).initLoader(0, null, this);
+        }
+    }
+
+    @NonNull
+    @Override
+    public Loader<String> onCreateLoader(int id, @Nullable Bundle args) {
+        String queryString = "";
+        if (args != null) {
+            queryString = args.getString(BUNDLE_QUERY_STRING);
+        }
+        BookLoader bookLoader = new BookLoader(this, queryString, 10);
+        ;
+        return bookLoader;
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader<String> loader, String data) {
+        updateResult(data);
+    }
+
+    @Override
+    public void onLoaderReset(@NonNull Loader<String> loader) {
+
     }
 
     public void searchBooks(View view) {
+        hideKeyboard(view);
         clearResult();
+        if (!hasConnectivity()) {
+            updateResult("No internet");
+            Log.d(LOG_TAG, "No internet");
+            return;
+        }
+        showLoading();
         String inputtedBookName = etBookName.getText().toString();
         //String finalUrl = String.format("%s%s", BASE_URL, inputtedBookName);
         //volleyRequest(finalUrl);
         //searchBookAsyncRequest(finalUrl);
-        asyncFetchBook(inputtedBookName);
+        //asyncFetchBook(inputtedBookName);
+        loaderFetchBook(inputtedBookName);
+    }
+
+    private void loaderFetchBook(String inputtedBookName) {
+        Bundle bundle = new Bundle();
+        bundle.putString(BUNDLE_QUERY_STRING, inputtedBookName);
+        LoaderManager.getInstance(this).restartLoader(0, bundle, this);
+    }
+
+    private boolean hasConnectivity() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        if (connectivityManager == null) {
+            return false;
+        }
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        boolean hasConnectivity = networkInfo != null && networkInfo.isConnected();
+        Log.d(LOG_TAG, String.format("Has connectivity: %b", hasConnectivity));
+        return hasConnectivity;
+    }
+
+    private void showLoading() {
+        btnSearch.setText(R.string.btn_loading);
+        btnSearch.setEnabled(false);
+    }
+
+    private void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     private void clearResult() {
@@ -69,8 +140,8 @@ public class MainActivity extends AppCompatActivity {
     private void searchBookAsyncRequest(String finalUrl) {
         new SearchBooksAsyncTask().execute(finalUrl);
     }
-
     //Volley is an HTTP library that makes networking for Android apps easier and most importantly, faster.
+
     private void volleyRequest(String finalUrl) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, finalUrl,
@@ -135,12 +206,18 @@ public class MainActivity extends AppCompatActivity {
     private void updateResult(String s) {
         Book book = parseJsonBook(s);
         if (book == null) {
-            tvTitle.setText("Book not found");
+            tvTitle.setText((s == null || s.isEmpty()) ? "Book not found" : s);
         } else {
             tvTitle.setText(book.getTitle());
             tvSubtitle.setText(book.getSubtitle());
             tvAuthor.setText(book.getAuthors());
         }
+        stopLoading();
+    }
+
+    private void stopLoading() {
+        btnSearch.setText(R.string.search_books_button);
+        btnSearch.setEnabled(true);
     }
 
     private Book parseJsonBook(String s) {
