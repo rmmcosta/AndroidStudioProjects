@@ -22,8 +22,8 @@ public class WebPageLoader2 extends Loader<String> {
      *
      * @param context used to retrieve the application context.
      */
-    private Context context;
-    private String url;
+    private final Context context;
+    private final String url;
 
     public WebPageLoader2(@NonNull Context context, @NonNull String url) {
         super(context);
@@ -35,9 +35,7 @@ public class WebPageLoader2 extends Loader<String> {
     protected void onForceLoad() {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                (Response.Listener<String>) response -> {
-                    deliverResult(response);
-                }, error -> {
+                (Response.Listener<String>) this::deliverResult, error -> {
             deliverResult(error.getMessage());
         });
         requestQueue.add(stringRequest);

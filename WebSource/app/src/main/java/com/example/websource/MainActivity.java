@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private Spinner spinner;
     private Button btnGetPageSource;
 
+    private Loader.OnLoadCompleteListener completeListener = (loader, data) -> showResult((String) data);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +53,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
         String url = getInputtedUrl();
         //pageVolley(url);
-        pageLoader(url);
-        //pageLoader2(url);
+        //pageLoader(url);
+        pageLoader2(url);
     }
 
     private void pageLoader2(String url) {
         WebPageLoader2 webPageLoader2 = new WebPageLoader2(this, url);
+        webPageLoader2.registerListener(0, completeListener);
         webPageLoader2.forceLoad();
     }
 
@@ -129,4 +132,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoaderReset(@NonNull Loader<String> loader) {
 
     }
+
+
 }
