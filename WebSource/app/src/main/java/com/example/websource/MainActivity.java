@@ -1,5 +1,7 @@
 package com.example.websource;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,15 +48,31 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     public void getPageSource(View view) {
         clearResult();
-        showLoading();
         if (etInputtedUrl.getText().toString().isEmpty()) {
             showResult("the url is mandatory!");
             return;
         }
+        if (!hasNetwork()) {
+            showResult("No network connection available!");
+            return;
+        }
+        showLoading();
         String url = getInputtedUrl();
         //pageVolley(url);
         //pageLoader(url);
         pageLoader2(url);
+    }
+
+    private boolean hasNetwork() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        if (connectivityManager == null) {
+            return false;
+        }
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            return true;
+        }
+        return false;
     }
 
     private void pageLoader2(String url) {
