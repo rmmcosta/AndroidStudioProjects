@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WebImage</string>
+    <string name="get_image_btn">Get Image</string>
+    <string name="web_image_description">web image</string>
+    <string name="no_network_message">No Network</string>
+    <string name="network_ok_message">Network Ok</string>
+    <string name="input_url_hint">Please input the url for the image</string>
+</resources>
