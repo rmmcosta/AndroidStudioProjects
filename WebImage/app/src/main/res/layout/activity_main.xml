@@ -12,21 +12,39 @@
         android:id="@+id/etImageUrl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textUri"
         android:autofillHints="@string/input_url_hint"
+        android:inputType="textUri"
         tools:ignore="LabelFor" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="getImage"
-        android:text="@string/get_image_btn" />
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/getButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:onClick="getImage"
+            android:text="@string/get_image_btn" />
+
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_marginStart="@dimen/default_margin_left"
+            android:onClick="clearInput"
+            android:text="@string/clear_btn" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_top"
         android:contentDescription="@string/web_image_description"
         android:scaleType="fitXY"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />

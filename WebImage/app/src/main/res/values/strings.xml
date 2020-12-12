@@ -5,4 +5,5 @@
     <string name="no_network_message">No Network</string>
     <string name="network_ok_message">Network Ok</string>
     <string name="input_url_hint">Please input the url for the image</string>
+    <string name="clear_btn">Clear</string>
 </resources>
