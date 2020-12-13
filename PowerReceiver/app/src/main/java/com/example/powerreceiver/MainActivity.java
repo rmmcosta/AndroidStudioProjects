@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         this.unregisterReceiver(broadcastReceiver);
-        this.unregisterReceiver(localBroadcastReceiver);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(localBroadcastReceiver);
         this.unregisterReceiver(internetReceiver);
         this.unregisterReceiver(powerReceiver);
         super.onDestroy();
