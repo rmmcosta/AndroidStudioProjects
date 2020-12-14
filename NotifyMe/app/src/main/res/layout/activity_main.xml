@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/main_padding"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnNotifyMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="notifyMe"
+        android:text="@string/notify_me" />
+
+    <Button
+        android:id="@+id/btnUpdateMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="updateMe"
+        android:text="@string/update_me" />
+
+    <Button
+        android:id="@+id/btnCancelMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cancelMe"
+        android:text="@string/cancel_me" />
+</LinearLayout>

@@ -2,4 +2,7 @@
     <string name="app_name">Joke</string>
     <string name="btn_text">What is the secret of comedy?</string>
     <string name="extra_message">My extra message</string>
+    <string name="btn_notification">Send Notification</string>
+    <string name="start_bind_service">Start Bind Service</string>
+    <string name="stop_bind_service">Stop Bind Service</string>
 </resources>

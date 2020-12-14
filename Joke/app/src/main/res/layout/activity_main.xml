@@ -9,9 +9,31 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="triggerService"
         android:text="@string/btn_text" />
+
+    <Button
+        android:id="@+id/btnNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:onClick="sendNotification"
+        android:text="@string/btn_notification" />
+
+    <Button
+        android:id="@+id/btnStartBindService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startBindService"
+        android:text="@string/start_bind_service" />
+
+    <Button
+        android:id="@+id/btnStopBindService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="stopBindService"
+        android:text="@string/stop_bind_service" />
 </LinearLayout>
