@@ -5,4 +5,5 @@
     <string name="btn_notification">Send Notification</string>
     <string name="start_bind_service">Start Bind Service</string>
     <string name="stop_bind_service">Stop Bind Service</string>
+    <string name="send_notify_26">Send Notify 26+</string>
 </resources>
