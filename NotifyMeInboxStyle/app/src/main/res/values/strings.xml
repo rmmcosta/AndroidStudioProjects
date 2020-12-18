@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Notify Me Inbox Style</string>
+    <string name="notify_btn_text">Notify Me Inbox Style</string>
+    <string name="update_notification_btn_text">Update Notification</string>
+</resources>
