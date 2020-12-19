@@ -2,4 +2,6 @@
     <string name="app_name">Notify Me Inbox Style</string>
     <string name="notify_btn_text">Notify Me Inbox Style</string>
     <string name="update_notification_btn_text">Update Notification</string>
+    <string name="send_image_notification_btn_text">Send Image Notification</string>
+    <string name="download_image_btn_text">Download image with service</string>
 </resources>
