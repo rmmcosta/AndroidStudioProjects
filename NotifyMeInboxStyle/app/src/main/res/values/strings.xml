@@ -4,4 +4,5 @@
     <string name="update_notification_btn_text">Update Notification</string>
     <string name="send_image_notification_btn_text">Send Image Notification</string>
     <string name="download_image_btn_text">Download image with service</string>
+    <string name="download_manager_btn_text">Download image with download manager</string>
 </resources>

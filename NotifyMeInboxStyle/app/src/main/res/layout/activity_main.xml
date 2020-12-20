@@ -29,9 +29,9 @@
         android:text="@string/send_image_notification_btn_text" />
 
     <Button
-        android:id="@+id/btnDownloadService"
+        android:id="@+id/btnDownloadImageDM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="downloadImage"
-        android:text="@string/download_image_btn_text" />
+        android:onClick="downloadImageDM"
+        android:text="@string/download_manager_btn_text" />
 </LinearLayout>

@@ -100,15 +100,11 @@ public class MainActivity extends AppCompatActivity {
                 .bigPicture(image);
         builder.setStyle(bigPictureStyle);
         //add download action
-        Intent downloadIntent = new Intent(this, DownloadIntentService.class);
+        Intent downloadIntent = DownloadServiceWithDM.getIntent(this, "https://images4.alphacoders.com/118/118664.jpg");
         PendingIntent pendingIntentDownloadImage = PendingIntent.getService(this, IMAGE_NOTIFICATION_ID, downloadIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.addAction(R.drawable.ic_download, "Download Image", pendingIntentDownloadImage);
+        
         notificationManager.notify(IMAGE_NOTIFICATION_ID, builder.build());
-    }
-
-    public void downloadImage(View view) {
-        Intent downloadIntent = new Intent(this, DownloadIntentService.class);
-        startService(downloadIntent);
     }
 
     class NotifyClickListener implements View.OnClickListener {
@@ -144,6 +140,11 @@ public class MainActivity extends AppCompatActivity {
         mainNotificationBuilder.setDeleteIntent(pendingIntentDismiss);
         notification = mainNotificationBuilder.build();
         notificationManager.notify(NOTIFICATION_ID, notification);
+    }
+
+    public void downloadImageDM(View view) {
+        Intent intent = DownloadServiceWithDM.getIntent(this, "https://images4.alphacoders.com/118/118664.jpg");
+        startService(intent);
     }
 
     class DismissReceiver extends BroadcastReceiver {
