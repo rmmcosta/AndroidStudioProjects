@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Stand Up!</string>
+    <string name="toggle_text_off">Turn Alarm On</string>
+    <string name="toggle_text_on">Turn Alarm Off</string>
+    <string name="toggle_alarm_notification_text_off">Turn Alarm Notification On</string>
+    <string name="toggle_alarm_notification_text_on">Turn Alarm Notification Off</string>
+    <string name="alarm_on_text">The Alarm is On</string>
+    <string name="alarm_off_text">The Alarm is off</string>
+</resources>

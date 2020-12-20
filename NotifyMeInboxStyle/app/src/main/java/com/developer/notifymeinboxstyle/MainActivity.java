@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         Intent downloadIntent = DownloadServiceWithDM.getIntent(this, "https://images4.alphacoders.com/118/118664.jpg");
         PendingIntent pendingIntentDownloadImage = PendingIntent.getService(this, IMAGE_NOTIFICATION_ID, downloadIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.addAction(R.drawable.ic_download, "Download Image", pendingIntentDownloadImage);
-        
+
         notificationManager.notify(IMAGE_NOTIFICATION_ID, builder.build());
     }
 
@@ -130,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intentOpenMainActivity = new Intent(this, MainActivity.class);
         PendingIntent pendingIntentOpenMainActivity = PendingIntent.getActivity(this, NOTIFICATION_ID, intentOpenMainActivity, PendingIntent.FLAG_UPDATE_CURRENT);
         mainNotificationBuilder.addAction(R.drawable.ic_open_app, "Open MainActivity", pendingIntentOpenMainActivity);
+        //open the app on clicking the notification
+        mainNotificationBuilder.setContentIntent(pendingIntentOpenMainActivity);
         //action show toast
         Intent intentShowToast = new Intent(INTENT_SHOWTOAST_ACTION);
         PendingIntent pendingIntentShowToast = PendingIntent.getBroadcast(this, NOTIFICATION_ID, intentShowToast, PendingIntent.FLAG_UPDATE_CURRENT);
