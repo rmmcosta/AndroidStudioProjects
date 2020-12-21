@@ -6,4 +6,10 @@
     <string name="toggle_alarm_notification_text_on">Turn Alarm Notification Off</string>
     <string name="alarm_on_text">The Alarm is On</string>
     <string name="alarm_off_text">The Alarm is off</string>
+    <string name="turn_alarm_receiver_text_off">Turn Alarm Receiver On</string>
+    <string name="turn_alarm_receiver_text_on">Turn Alarm Receiver Off</string>
+    <string name="show_next_alarm_text">Show Next Alarm</string>
+    <string name="edit_text_time_hint">input the hour for the alarm</string>
+    <string name="specific_alarm_text_off">Set the alarm for the specified hour</string>
+    <string name="specific_alarm_text_on">Turn off the alarm for the specified hour</string>
 </resources>

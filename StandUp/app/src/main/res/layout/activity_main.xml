@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/main_padding"
     tools:context=".MainActivity">
 
     <ToggleButton
@@ -12,21 +15,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textOff="@string/toggle_text_off"
-        android:textOn="@string/toggle_text_on"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textOn="@string/toggle_text_on" />
 
     <ToggleButton
         android:id="@+id/toggleAlarmNotification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textOff="@string/toggle_alarm_notification_text_off"
-        android:textOn="@string/toggle_alarm_notification_text_on"
-        app:layout_constraintBottom_toTopOf="@+id/toggleAlarm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textOn="@string/toggle_alarm_notification_text_on" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ToggleButton
+        android:id="@+id/toggleAlarmReceiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="@string/turn_alarm_receiver_text_off"
+        android:textOn="@string/turn_alarm_receiver_text_on" />
+
+    <Button
+        android:id="@+id/btnShowNextAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showNextAlarm"
+        android:text="@string/show_next_alarm_text" />
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="@string/edit_text_time_hint"
+        android:ems="10"
+        android:inputType="time"
+        tools:ignore="LabelFor" />
+
+    <ToggleButton
+        android:id="@+id/toggleSpecificAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOff="@string/specific_alarm_text_off"
+        android:textOn="@string/specific_alarm_text_on" />
+
+</LinearLayout>
