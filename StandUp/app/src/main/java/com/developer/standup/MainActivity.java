@@ -8,19 +8,27 @@ import android.icu.util.Calendar;
 import android.icu.util.GregorianCalendar;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Locale;
 
@@ -31,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AlarmManager alarmManager;
     private Intent notificationsIntent;
+
+    private EditText timeEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +59,30 @@ public class MainActivity extends AppCompatActivity {
         ToggleButton toggleSpecificTimeAlarm = findViewById(R.id.toggleSpecificAlarm);
         toggleSpecificTimeAlarm.setOnCheckedChangeListener(new OnToggleChange());
 
+        timeEditText = findViewById(R.id.editTextTime);
+        timeEditText.setOnFocusChangeListener((view, b) -> {
+            if (!b) {
+                hideKeyboard();
+            }
+        });
+
+        toggleSpecificTimeAlarm.setOnClickListener(view -> {
+            hideKeyboard();
+            timeEditText.clearFocus();
+        });
+
         notificationsIntent = new Intent(getApplicationContext(), NotificationsReceiver.class);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         checkToggleState(toggleWalkReceiver, NOTIFICATION_WALK_ID);
         checkToggleState(toggleSpecificTimeAlarm, NOTIFICATION_ALARM_ID);
 
+    }
+
+    private void hideKeyboard() {
+        Log.d(LOG_TAG, "hide keyboard");
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(timeEditText.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     private void checkToggleState(ToggleButton toggleButton, int notificationId) {
@@ -75,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class OnToggleChange implements CompoundButton.OnCheckedChangeListener {
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
             Log.d(LOG_TAG, "on checked changed");
@@ -99,23 +128,13 @@ public class MainActivity extends AppCompatActivity {
             if (compoundButton.getId() == R.id.toggleSpecificAlarm) {
                 PendingIntent pendingIntent = getSpecificAlarmPendingIntent();
                 if (b) {
-                    EditText timeEditText = findViewById(R.id.editTextTime);
                     String time = timeEditText.getText().toString();
-                    String[] timeParts = time.split(":");
-                    if (timeParts.length != 2) {
-                        showMessage("wrong inputted time!");
-                        return;
+                    try {
+                        long nextTime = DateTimeUtils.getNextDateTimeInMilli(time);
+                        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextTime, pendingIntent);
+                    } catch (DateTimeUtils.WrongTimeException e) {
+                        showMessage(e.getMessage());
                     }
-                    int hour = Integer.parseInt(timeParts[0]);
-                    int minute = Integer.parseInt(timeParts[1]);
-                    Date currDateTime = new Date();
-                    Date inputtedDateTime = new Date(currDateTime.getYear(), currDateTime.getMonth(), currDateTime.getDay(), hour, minute);
-                    if (inputtedDateTime.compareTo(currDateTime) < 0) {
-                        inputtedDateTime = new Date(currDateTime.getYear(), currDateTime.getMonth(), currDateTime.getDay() + 1, hour, minute);
-                    }
-                    Calendar calendar = GregorianCalendar.getInstance(Locale.UK);
-                    calendar.setTime(inputtedDateTime);
-                    alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
                 } else {
                     alarmManager.cancel(pendingIntent);
                 }
