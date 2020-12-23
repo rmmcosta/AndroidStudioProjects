@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/main_padding"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvNetworkType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/network_type_required_text" />
+
+    <RadioGroup
+        android:id="@+id/rgNetworkType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbNone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/rb_none_text" />
+
+        <RadioButton
+            android:id="@+id/rbAny"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rb_any_text" />
+
+        <RadioButton
+            android:id="@+id/rbWiFi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rb_wifi_text" />
+
+        <RadioButton
+            android:id="@+id/rbCellular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rb_cellular_text" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvRequires"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/requires_text" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchIdle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/device_idle_switch_text" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchCharging"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/device_charging_switch_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/override_deadline_text" />
+
+        <TextView
+            android:id="@+id/tvOverrideDeadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin_left"
+            android:text="@string/override_deadline_empty_value" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/sbOverrideDeadline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnScheduleJobs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="scheduleJobs"
+            android:text="@string/btn_schedule_text" />
+
+        <Button
+            android:id="@+id/btnCancelJobs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="cancelJobs"
+            android:text="@string/btn_cancel_text" />
+    </LinearLayout>
+
+</LinearLayout>

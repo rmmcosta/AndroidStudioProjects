@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Notification Scheduler</string>
+    <string name="network_type_required_text">Network Type Required:</string>
+    <string name="rb_none_text">None</string>
+    <string name="rb_any_text">Any</string>
+    <string name="rb_wifi_text">WiFi</string>
+    <string name="requires_text">Requires:</string>
+    <string name="device_idle_switch_text">Device Idle</string>
+    <string name="device_charging_switch_text">Device Charging</string>
+    <string name="btn_schedule_text">Schedule Jobs</string>
+    <string name="btn_cancel_text">Cancel Jobs</string>
+    <string name="override_deadline_text">Override Deadline:</string>
+    <string name="override_deadline_empty_value">Not Set</string>
+    <string name="job_scheduled_text">Job %d scheduled. The job will run when the conditions are met!</string>
+    <string name="job_cancelled">Job %d cancelled!</string>
+    <string name="rb_cellular_text">Cellular</string>
+    <string name="override_deadline_progress_text">%d secs</string>
+</resources>

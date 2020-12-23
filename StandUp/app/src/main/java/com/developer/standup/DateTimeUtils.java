@@ -26,6 +26,7 @@ public class DateTimeUtils {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             return getLocalNextDateTimeInMilli(hour, min);
         } else {
+            //TODO develop the logic for devices running under oreo version
             return 0;
         }
     }
@@ -36,6 +37,7 @@ public class DateTimeUtils {
             ZonedDateTime zonedDateTime = currDateTime.atZone(ZoneId.of("Europe/Lisbon"));
             return zonedDateTime.toInstant().toEpochMilli();
         } else {
+            //TODO develop the logic for devices running under oreo version
             return 0;
         }
     }

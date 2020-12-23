@@ -4,11 +4,8 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
-import android.icu.util.GregorianCalendar;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
@@ -24,11 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.sql.Time;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Locale;
 
@@ -71,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             timeEditText.clearFocus();
         });
 
-        notificationsIntent = new Intent(getApplicationContext(), NotificationsReceiver.class);
+        notificationsIntent = new Intent(this, NotificationsReceiver.class);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         checkToggleState(toggleWalkReceiver, NOTIFICATION_WALK_ID);
@@ -86,8 +78,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkToggleState(ToggleButton toggleButton, int notificationId) {
-        boolean isChecked = PendingIntent.getBroadcast(this, notificationId, notificationsIntent, PendingIntent.FLAG_NO_CREATE) != null;
+        Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+        boolean isChecked = PendingIntent.getBroadcast(this, notificationId, alarmIntent, PendingIntent.FLAG_NO_CREATE) != null;
         toggleButton.setChecked(isChecked);
+        String time = alarmIntent.getStringExtra(AlarmNotification.EXTRA_ALARM_TIME);
+        timeEditText.setText(time);
     }
 
     public void showNextAlarm(View view) {
@@ -126,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
             if (compoundButton.getId() == R.id.toggleSpecificAlarm) {
-                PendingIntent pendingIntent = getSpecificAlarmPendingIntent();
+                String time = timeEditText.getText().toString();
+                PendingIntent pendingIntent = getSpecificAlarmPendingIntent(time);
                 if (b) {
-                    String time = timeEditText.getText().toString();
                     try {
                         long nextTime = DateTimeUtils.getNextDateTimeInMilli(time);
                         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextTime, pendingIntent);
@@ -142,22 +137,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private PendingIntent getSpecificAlarmPendingIntent() {
-        notificationsIntent.putExtra(NotificationsReceiver.EXTRA_NOTIFICATION_ID, NOTIFICATION_ALARM_ID);
-        notificationsIntent.putExtra(NotificationsReceiver.EXTRA_NOTIFICATION_TITLE, "Time to wake up!");
-        notificationsIntent.putExtra(NotificationsReceiver.EXTRA_NOTIFICATION_ICON, R.drawable.ic_alarm);
-        return PendingIntent.getBroadcast(getApplicationContext(), NOTIFICATION_ALARM_ID, notificationsIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+    private PendingIntent getSpecificAlarmPendingIntent(String time) {
+        return AlarmNotification.getBroadcastPendingIntent(this, NOTIFICATION_ALARM_ID, time);
     }
 
     private PendingIntent getWalkPendingIntent() {
-        notificationsIntent.putExtra(NotificationsReceiver.EXTRA_NOTIFICATION_ID, NOTIFICATION_WALK_ID);
-        notificationsIntent.putExtra(NotificationsReceiver.EXTRA_NOTIFICATION_TITLE, "Time to go for a walk!");
-        notificationsIntent.putExtra(NotificationsReceiver.EXTRA_NOTIFICATION_ICON, R.drawable.ic_walk);
+        notificationsIntent.putExtra(AlarmNotification.EXTRA_NOTIFICATION_ID, NOTIFICATION_WALK_ID);
+        notificationsIntent.putExtra(AlarmNotification.EXTRA_NOTIFICATION_TITLE, "Time to go for a walk!");
+        notificationsIntent.putExtra(AlarmNotification.EXTRA_NOTIFICATION_ICON, R.drawable.ic_walk);
         return PendingIntent.getBroadcast(getApplicationContext(), NOTIFICATION_WALK_ID, notificationsIntent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     private void sendNotification(String s) {
-        AlarmNotification.send(this, NOTIFICATION_WALK_ID, s, R.drawable.ic_alarm);
+        AlarmNotification alarmNotification = new AlarmNotification(this, NOTIFICATION_WALK_ID, s, R.drawable.ic_alarm, "");
+        alarmNotification.send();
     }
 
     private void showMessage(String msg) {
