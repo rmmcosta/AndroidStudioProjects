@@ -113,6 +113,14 @@
             android:layout_height="wrap_content"
             android:onClick="cancelJobs"
             android:text="@string/btn_cancel_text" />
+
+        <Button
+            android:id="@+id/btnScheduleLongJob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="scheduleLongJobs"
+            android:text="@string/schedule_long_jobs_btn_text" />
     </LinearLayout>
+
 
 </LinearLayout>

@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final int JOB_ID = 3322;
+    private static final int JOB_LONG_ID = 5511;
     private JobScheduler jobScheduler;
     private TextView tvOverrideDeadline;
     private int overrideDeadline;
@@ -24,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         tvOverrideDeadline = findViewById(R.id.tvOverrideDeadline);
         SeekBar sbOverrideDeadline = findViewById(R.id.sbOverrideDeadline);
         sbOverrideDeadline.setOnSeekBarChangeListener(new CustomSeekBarChangeListener());
     }
 
     class CustomSeekBarChangeListener implements SeekBar.OnSeekBarChangeListener {
+
         @Override
         public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
             tvOverrideDeadline.setText(String.format(getString(R.string.override_deadline_progress_text), i));
@@ -45,32 +48,42 @@ public class MainActivity extends AppCompatActivity {
         public void onStopTrackingTouch(SeekBar seekBar) {
 
         }
+
     }
 
-
-    public void scheduleJobs(View view) {
-        if (!hasMinimumRequirements()) {
-            showMessage("You must define at least one constraint!");
+    public void scheduleLongJobs(View view) {
+        if (requirementsMissing()) {
+            showMessage(getString(R.string.schedule_requirements_text));
             return;
         }
-        jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        ComponentName componentName = new ComponentName(getPackageName(), LongJobService.class.getName());
+        JobInfo.Builder builder = getJobBuilder(componentName, JOB_LONG_ID);
+        jobScheduler.schedule(builder.build());
+        showMessage(String.format(getString(R.string.job_scheduled_text), JOB_LONG_ID));
+    }
+
+    public void scheduleJobs(View view) {
+        if (requirementsMissing()) {
+            showMessage(getString(R.string.schedule_requirements_text));
+            return;
+        }
         ComponentName componentName = new ComponentName(getPackageName(), NotificationJobService.class.getName());
-        JobInfo.Builder jobInfoBuilder = getJobBuilder(componentName);
+        JobInfo.Builder jobInfoBuilder = getJobBuilder(componentName, JOB_ID);
         JobInfo jobInfo = jobInfoBuilder.build();
         jobScheduler.schedule(jobInfo);
         showMessage(String.format(getString(R.string.job_scheduled_text), JOB_ID));
     }
 
-    private boolean hasMinimumRequirements() {
-        return getSelectedNetworkType() != JobInfo.NETWORK_TYPE_NONE || getCharging() || getIdle() || overrideDeadline > 0;
+    private boolean requirementsMissing() {
+        return getSelectedNetworkType() == JobInfo.NETWORK_TYPE_NONE && !getCharging() && !getIdle() && overrideDeadline <= 0;
     }
 
     private void showMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
-    private JobInfo.Builder getJobBuilder(ComponentName componentName) {
-        JobInfo.Builder jobInfoBuilder = new JobInfo.Builder(JOB_ID, componentName);
+    private JobInfo.Builder getJobBuilder(ComponentName componentName, int jobId) {
+        JobInfo.Builder jobInfoBuilder = new JobInfo.Builder(jobId, componentName);
 
         jobInfoBuilder.setRequiredNetworkType(getSelectedNetworkType());
 
@@ -109,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cancelJobs(View view) {
-        jobScheduler.cancel(JOB_ID);
-        showMessage(String.format(getString(R.string.job_cancelled), JOB_ID));
+        jobScheduler.cancelAll();
+        showMessage("All jobs cancelled!");
     }
 }

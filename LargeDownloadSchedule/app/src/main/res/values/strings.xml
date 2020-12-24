@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Large Download Schedule</string>
+    <string name="download_now_btn_text">Download Now</string>
+    <string name="show_toast_btn_text">Show Toast</string>
+    <string name="download_via_service_btn_text">Download via Service</string>
+</resources>

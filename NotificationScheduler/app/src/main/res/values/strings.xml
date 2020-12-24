@@ -15,4 +15,6 @@
     <string name="job_cancelled">Job %d cancelled!</string>
     <string name="rb_cellular_text">Cellular</string>
     <string name="override_deadline_progress_text">%d secs</string>
+    <string name="schedule_long_jobs_btn_text">Schedule Long Jobs</string>
+    <string name="schedule_requirements_text">You must define at least one constraint!</string>
 </resources>
