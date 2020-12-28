@@ -1,0 +1,21 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:fragment="com.example.droidcafe_withsettings.SettingsActivity$MessagesFragment"
+        app:icon="@drawable/messages"
+        app:key="messages_header"
+        app:title="@string/messages_header" />
+
+    <Preference
+        app:fragment="com.example.droidcafe_withsettings.SettingsActivity$SyncFragment"
+        app:icon="@drawable/sync"
+        app:key="sync_header"
+        app:title="@string/sync_header" />
+
+    <Preference
+        app:fragment="com.example.droidcafe_withsettings.SettingsActivity$AccountFragment"
+        app:icon="@drawable/account"
+        app:key="account_header"
+        app:title="@string/account_header" />
+
+</PreferenceScreen>

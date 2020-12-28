@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">App With Settings</string>
+    <string name="settings_menu_option">Settings</string>
+    <string name="settings_option_title">Settings Option</string>
+    <string name="settings_option_description">Turn on or off the settings option</string>
+    <string name="settings_option_feedback_message">The settings options is activated: %s</string>
+    <string name="settings_2_menu_option">Settings 2</string>
+    <string name="setting_placeholder">setting placeholder</string>
+    <string name="title_activity_settings3">SettingsActivity3</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="settings_3_menu_option">Settings 3 (out of the box)</string>
+    <string name="setting_image_view_description">setting icon</string>
+</resources>
