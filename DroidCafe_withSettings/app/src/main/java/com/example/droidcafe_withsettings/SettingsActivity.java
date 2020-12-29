@@ -39,6 +39,16 @@ public class SettingsActivity extends AppCompatActivity implements
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        if (findViewById(R.id.settingsDetailFragment) != null) {
+            replaceSettingsDetailFragment(new MessagesFragment());
+        }
+    }
+
+    private void replaceSettingsDetailFragment(Fragment newFragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.settingsDetailFragment, newFragment)
+                .commit();
     }
 
     @Override
@@ -66,11 +76,15 @@ public class SettingsActivity extends AppCompatActivity implements
         fragment.setArguments(args);
         fragment.setTargetFragment(caller, 0);
         // Replace the existing Fragment with the new Fragment
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.settings, fragment)
-                .addToBackStack(null)
-                .commit();
-        setTitle(pref.getTitle());
+        if (findViewById(R.id.settingsDetailFragment) != null) {
+            replaceSettingsDetailFragment(fragment);
+        } else {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.settings, fragment)
+                    .addToBackStack(null)
+                    .commit();
+            setTitle(pref.getTitle());
+        }
         return true;
     }
 
