@@ -12,6 +12,7 @@ public class SettingsActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TopBarColorChangeListener.applyPreferenceTheme(this);
         setContentView(R.layout.activity_settings2);
         RecyclerView recyclerView = findViewById(R.id.rvSettings);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

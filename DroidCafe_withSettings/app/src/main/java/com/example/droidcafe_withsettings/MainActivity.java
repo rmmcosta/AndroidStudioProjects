@@ -1,6 +1,7 @@
 package com.example.droidcafe_withsettings;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -22,40 +24,16 @@ public class MainActivity extends AppCompatActivity {
     public static final String LOG = "MyLog";
     private static HashMap<String, Integer> cart;
 
-    public static void initializeCart() {
-        cart = new HashMap<>();
-    }
-
-    public static void addToCart(String item) {
-        int qty = 1;
-        if (cart.containsKey(item))
-            qty += cart.get(item);
-        cart.put(item, qty);
-    }
-
-    //returns true if the item was removed from the cart
-    public static boolean subtractToCart(String item) {
-        if (cart.containsKey(item)) {
-            int qty = cart.get(item);
-            if (qty > 1) {
-                cart.put(item, qty - 1);
-                return false;
-            } else {
-                cart.remove(item);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static Set<Map.Entry<String, Integer>> getCartItems() {
-        return cart.entrySet();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //the read again flag doesn't work very well when set to false
+        PreferenceManager.setDefaultValues(this, R.xml.account_preferences,true);
+        PreferenceManager.setDefaultValues(this, R.xml.general_preferences,true);
+        PreferenceManager.setDefaultValues(this, R.xml.messages_preferences, true);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -92,6 +70,35 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static void initializeCart() {
+        cart = new HashMap<>();
+    }
+    public static void addToCart(String item) {
+        int qty = 1;
+        if (cart.containsKey(item))
+            qty += cart.get(item);
+        cart.put(item, qty);
+    }
+
+    //returns true if the item was removed from the cart
+    public static boolean subtractToCart(String item) {
+        if (cart.containsKey(item)) {
+            int qty = cart.get(item);
+            if (qty > 1) {
+                cart.put(item, qty - 1);
+                return false;
+            } else {
+                cart.remove(item);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static Set<Map.Entry<String, Integer>> getCartItems() {
+        return cart.entrySet();
     }
 
     public void confirmPurchase(View view) {

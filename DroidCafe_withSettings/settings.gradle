@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "DroidCafe_withOriginalBasicActivity"
+rootProject.name = "DroidCafe_withSettings"

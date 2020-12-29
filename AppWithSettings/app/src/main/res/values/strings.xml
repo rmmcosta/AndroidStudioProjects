@@ -24,4 +24,38 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="settings_3_menu_option">Settings 3 (out of the box)</string>
     <string name="setting_image_view_description">setting icon</string>
+    <string name="timeout_header">Timeout</string>
+    <string name="color_header">Top Bar Color preference</string>
+
+    <string-array name="timeout_entries">
+    <item>5 seconds</item>
+    <item>10 seconds</item>
+    <item>25 seconds</item>
+    <item>30 seconds</item>
+    <item>50 seconds</item>
+</string-array>
+    <string-array name="timeout_values">
+        <item>5</item>
+        <item>10</item>
+        <item>25</item>
+        <item>30</item>
+        <item>50</item>
+    </string-array>
+
+    <string-array name="topBarColor_entries">
+        <item>Blue</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Black</item>
+        <item>White</item>
+        <item>Purple 500</item>
+    </string-array>
+    <string-array name="topBarColor_values">
+        <item>#2196F3</item>
+        <item>#F44336</item>
+        <item>#4CAF50</item>
+        <item>#000000</item>
+        <item>#FFFFFF</item>
+        <item>#FF6200EE</item>
+    </string-array>
 </resources>

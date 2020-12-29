@@ -1,26 +1,27 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference
-        app:fragment="com.example.droidcafe_withsettings.SettingsActivity$GeneralFragment"
-        app:icon="@drawable/general"
-        app:key="general_header"
-        app:title="@string/general_header" />
+        android:fragment="com.example.droidcafe_withsettings.SettingsActivity$GeneralFragment"
+        android:icon="@drawable/general"
+        android:key="general_header"
+        android:title="@string/general_header" />
     <Preference
-        app:fragment="com.example.droidcafe_withsettings.SettingsActivity$MessagesFragment"
-        app:icon="@drawable/messages"
-        app:key="messages_header"
-        app:title="@string/messages_header" />
+        android:fragment="com.example.droidcafe_withsettings.SettingsActivity$MessagesFragment"
+        android:icon="@drawable/messages"
+        android:key="messages_header"
+        android:title="@string/messages_header" />
 
     <Preference
-        app:fragment="com.example.droidcafe_withsettings.SettingsActivity$SyncFragment"
-        app:icon="@drawable/sync"
-        app:key="sync_header"
-        app:title="@string/sync_header" />
+        android:fragment="com.example.droidcafe_withsettings.SettingsActivity$SyncFragment"
+        android:icon="@drawable/sync"
+        android:key="sync_header"
+        android:title="@string/sync_header" />
 
     <Preference
-        app:fragment="com.example.droidcafe_withsettings.SettingsActivity$AccountFragment"
-        app:icon="@drawable/account"
-        app:key="account_header"
-        app:title="@string/account_header" />
+        android:fragment="com.example.droidcafe_withsettings.SettingsActivity$AccountFragment"
+        android:icon="@drawable/account"
+        android:key="account_header"
+        android:title="@string/account_header" />
 
 </PreferenceScreen>

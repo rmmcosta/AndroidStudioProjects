@@ -2,8 +2,10 @@ package com.developer.appwithsettings;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,10 +21,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TopBarColorChangeListener.applyPreferenceTheme(this);
         setContentView(R.layout.activity_main);
         settings = Settings.getSettingsInstance();
         TextView tvSettingsOptionStatus = findViewById(R.id.tvSettingsOptionStatus);
         tvSettingsOptionStatus.setText(String.format(getString(R.string.settings_option_feedback_message), settings.isSettingsOptionText()));
+
+        PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences.registerOnSharedPreferenceChangeListener(new TopBarColorChangeListener(this, this));
     }
 
     @Override

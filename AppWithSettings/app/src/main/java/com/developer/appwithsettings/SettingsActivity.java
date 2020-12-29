@@ -12,6 +12,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TopBarColorChangeListener.applyPreferenceTheme(this);
         setContentView(R.layout.activity_settings);
         settings = Settings.getSettingsInstance();
         SwitchCompat switchCompat = findViewById(R.id.switchSettingsOption);
