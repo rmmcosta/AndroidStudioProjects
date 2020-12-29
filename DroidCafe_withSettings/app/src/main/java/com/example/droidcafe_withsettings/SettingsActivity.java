@@ -40,7 +40,7 @@ public class SettingsActivity extends AppCompatActivity implements
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         if (findViewById(R.id.settingsDetailFragment) != null) {
-            replaceSettingsDetailFragment(new MessagesFragment());
+            replaceSettingsDetailFragment(new GeneralFragment());
         }
     }
 
@@ -118,5 +118,13 @@ public class SettingsActivity extends AppCompatActivity implements
             setPreferencesFromResource(R.xml.account_preferences, rootKey);
         }
     }
+
+    public static class GeneralFragment extends PreferenceFragmentCompat {
+        @Override
+        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+            setPreferencesFromResource(R.xml.general_preferences, rootKey);
+        }
+    }
+
 
 }

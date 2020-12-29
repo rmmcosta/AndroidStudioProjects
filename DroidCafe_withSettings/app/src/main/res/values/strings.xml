@@ -43,4 +43,5 @@
     
     <!-- Account Preferences -->
     <string name="market_title">Market</string>
+    <string name="general_header">General</string>
 </resources>

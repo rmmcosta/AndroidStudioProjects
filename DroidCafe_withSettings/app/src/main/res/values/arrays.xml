@@ -28,4 +28,15 @@
         <item>PT</item>
         <item>-1</item>
     </string-array>
+    <!-- General - Delivery Preferences -->
+    <string-array name="delivery_entries">
+        <item>Same day messenger service</item>
+        <item>Next day ground delivery</item>
+        <item>Pick up</item>
+    </string-array>
+    <string-array name="delivery_values">
+        <item>sdms</item>
+        <item>ndgd</item>
+        <item>piup</item>
+    </string-array>
 </resources>
