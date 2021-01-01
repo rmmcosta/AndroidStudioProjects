@@ -12,4 +12,5 @@
     <string name="add_word_action">Add Word</string>
     <string name="save_btn_text">Save</string>
     <string name="word_hints">input a word</string>
+    <string name="word_placeholder">Word placeholder</string>
 </resources>

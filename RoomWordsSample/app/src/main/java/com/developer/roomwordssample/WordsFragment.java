@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -28,5 +30,10 @@ public class WordsFragment extends Fragment {
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(viewFab -> NavHostFragment.findNavController(WordsFragment.this)
                 .navigate(R.id.action_FirstFragment_to_SecondFragment));
+
+        RecyclerView rvWords = view.findViewById(R.id.rvWords);
+        rvWords.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        WordEntity wordEntity = WordEntity.getInstance();
+        rvWords.setAdapter(new WordsAdapter(wordEntity.getWords()));
     }
 }
