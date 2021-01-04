@@ -7,11 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 public class WordsFragment extends Fragment {
 
@@ -33,7 +36,9 @@ public class WordsFragment extends Fragment {
 
         RecyclerView rvWords = view.findViewById(R.id.rvWords);
         rvWords.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        WordEntity wordEntity = WordEntity.getInstance();
-        rvWords.setAdapter(new WordsAdapter(wordEntity.getWords()));
+        /*WordEntity wordEntity = WordEntity.getInstance();
+        List<Word> wordList = wordEntity.getWords();*/
+        //TODO logic to read all words from the database
+        rvWords.setAdapter(new WordsAdapter(wordList.getValue()));
     }
 }

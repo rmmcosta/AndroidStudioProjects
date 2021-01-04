@@ -31,8 +31,9 @@ public class WordDetailFragment extends Fragment {
     private void addWord(View mainView) {
         EditText etWord = mainView.findViewById(R.id.etWord);
         String word = String.valueOf(etWord.getText());
-        WordEntity wordEntity = WordEntity.getInstance();
-        wordEntity.addWord(new Word(word));
+        /*WordEntity wordEntity = WordEntity.getInstance();
+        wordEntity.addWord(new Word(word));*/
+        //TODO logic to save words in the database
         showMessage(String.format("Word %s added.", word));
     }
 

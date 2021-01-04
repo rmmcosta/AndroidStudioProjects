@@ -11,9 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.WordsViewHolder> {
-    private final List<Word> words;
+    private List<Word> words;
 
     public WordsAdapter(List<Word> words) {
+        this.words = words;
+    }
+
+    public void setWords(List<Word> words) {
         this.words = words;
     }
 
@@ -31,7 +35,10 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.WordsViewHol
 
     @Override
     public int getItemCount() {
-        return words.size();
+        if (words != null)
+            return words.size();
+        else
+            return 0;
     }
 
     class WordsViewHolder extends RecyclerView.ViewHolder {
