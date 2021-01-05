@@ -10,9 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.fragment.NavHostFragment;
 
 public class WordDetailFragment extends Fragment {
-
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -31,10 +32,17 @@ public class WordDetailFragment extends Fragment {
     private void addWord(View mainView) {
         EditText etWord = mainView.findViewById(R.id.etWord);
         String word = String.valueOf(etWord.getText());
-        /*WordEntity wordEntity = WordEntity.getInstance();
-        wordEntity.addWord(new Word(word));*/
-        //TODO logic to save words in the database
+
+        assert (getActivity() != null);
+        WordViewModel wordViewModel = new WordViewModel(getActivity().getApplication());
+        if (wordViewModel.getWord(word) != null) {
+            showMessage("The Word already exists in the database!");
+            return;
+        }
+        wordViewModel.insert(new Word(word));
         showMessage(String.format("Word %s added.", word));
+        NavHostFragment.findNavController(WordDetailFragment.this)
+                .navigate(R.id.action_SecondFragment_to_FirstFragment);
     }
 
     private void showMessage(String msg) {

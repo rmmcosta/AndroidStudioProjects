@@ -64,4 +64,7 @@ dependencies {
     // alternately - if using Java8, use the following instead of lifecycle-compiler
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$room_version"
+    implementation "androidx.concurrent:concurrent-futures:1.1.0"
 }

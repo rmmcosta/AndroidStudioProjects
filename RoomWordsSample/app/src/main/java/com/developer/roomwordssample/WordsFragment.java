@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,10 +34,12 @@ public class WordsFragment extends Fragment {
                 .navigate(R.id.action_FirstFragment_to_SecondFragment));
 
         RecyclerView rvWords = view.findViewById(R.id.rvWords);
+
+        assert (getActivity() != null);
+        WordViewModel wordViewModel = new WordViewModel(getActivity().getApplication());
+        List<Word> wordList = wordViewModel.getAllWords().getValue();
+        
+        rvWords.setAdapter(new WordsAdapter(getContext()));
         rvWords.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        /*WordEntity wordEntity = WordEntity.getInstance();
-        List<Word> wordList = wordEntity.getWords();*/
-        //TODO logic to read all words from the database
-        rvWords.setAdapter(new WordsAdapter(wordList.getValue()));
     }
 }
