@@ -1,16 +1,17 @@
 package com.developer.roomwordssample;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class WordDetailFragment extends Fragment {
@@ -31,6 +32,11 @@ public class WordDetailFragment extends Fragment {
 
     private void addWord(View mainView) {
         EditText etWord = mainView.findViewById(R.id.etWord);
+        if (getContext() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(mainView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+
         String word = String.valueOf(etWord.getText());
 
         assert (getActivity() != null);

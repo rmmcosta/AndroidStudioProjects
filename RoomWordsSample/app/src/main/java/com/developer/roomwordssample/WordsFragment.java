@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,13 +36,15 @@ public class WordsFragment extends Fragment {
         fab.setOnClickListener(viewFab -> NavHostFragment.findNavController(WordsFragment.this)
                 .navigate(R.id.action_FirstFragment_to_SecondFragment));
 
-        RecyclerView rvWords = view.findViewById(R.id.rvWords);
-
         assert (getActivity() != null);
-        WordViewModel wordViewModel = new WordViewModel(getActivity().getApplication());
-        List<Word> wordList = wordViewModel.getAllWords().getValue();
-        
-        rvWords.setAdapter(new WordsAdapter(getContext()));
-        rvWords.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        WordViewModel wordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
+        wordViewModel.getAllWords().observe(getActivity(), words -> {
+            RecyclerView rvWords = view.findViewById(R.id.rvWords);
+            WordsAdapter wordsAdapter = new WordsAdapter(getContext());
+            wordsAdapter.setWords(words);
+            rvWords.setAdapter(wordsAdapter);
+            rvWords.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        });
     }
+
 }
