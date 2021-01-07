@@ -2,6 +2,7 @@ package com.developer.roomwordssample;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
@@ -34,22 +35,36 @@ public abstract class WordRoomDatabase extends RoomDatabase {
                                     Executor executor = Executors.newSingleThreadExecutor();
                                     executor.execute(() -> {
                                         SharedPreferences sharedPreferencesDefault = PreferenceManager.getDefaultSharedPreferences(context);
-                                        boolean restoreDatabase = sharedPreferencesDefault.getBoolean("restore_database", false);
-                                        boolean useDatabase = sharedPreferencesDefault.getBoolean("use_database", false);
-                                        if (!restoreDatabase || !useDatabase) {
-                                            return;
-                                        }
-                                        wordRoomDatabaseInstance.wordDao().deleteAll();
-                                        for (String each : initialWords) {
-                                            wordRoomDatabaseInstance.wordDao().insert(new Word(each));
-                                        }
+                                        restoreDatabase(sharedPreferencesDefault);
                                     });
                                 }
+
+
                             })
                             .build();
                 }
             }
         }
         return wordRoomDatabaseInstance;
+    }
+
+    public static SharedPreferences.OnSharedPreferenceChangeListener getOnSharedPreferenceChangeListener() {
+        return (sharedPreferences, s) -> restoreDatabase(sharedPreferences);
+    }
+
+    private static void restoreDatabase(SharedPreferences sharedPreferencesDefault) {
+        Executor executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            boolean restoreDatabase = sharedPreferencesDefault.getBoolean("restore_database", false);
+            boolean useDatabase = sharedPreferencesDefault.getBoolean("use_database", false);
+            if (!restoreDatabase || !useDatabase) {
+                return;
+            }
+            wordRoomDatabaseInstance.wordDao().deleteAll();
+            for (String each : initialWords) {
+                wordRoomDatabaseInstance.wordDao().insert(new Word(each));
+            }
+        });
+
     }
 }
