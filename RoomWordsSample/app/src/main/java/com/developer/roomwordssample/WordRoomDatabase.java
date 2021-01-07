@@ -1,6 +1,7 @@
 package com.developer.roomwordssample;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
@@ -32,8 +33,10 @@ public abstract class WordRoomDatabase extends RoomDatabase {
                                     super.onOpen(db);
                                     Executor executor = Executors.newSingleThreadExecutor();
                                     executor.execute(() -> {
-                                        boolean restoreDatabase = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("restore_database", false);
-                                        if (!restoreDatabase) {
+                                        SharedPreferences sharedPreferencesDefault = PreferenceManager.getDefaultSharedPreferences(context);
+                                        boolean restoreDatabase = sharedPreferencesDefault.getBoolean("restore_database", false);
+                                        boolean useDatabase = sharedPreferencesDefault.getBoolean("use_database", false);
+                                        if (!restoreDatabase || !useDatabase) {
                                             return;
                                         }
                                         wordRoomDatabaseInstance.wordDao().deleteAll();

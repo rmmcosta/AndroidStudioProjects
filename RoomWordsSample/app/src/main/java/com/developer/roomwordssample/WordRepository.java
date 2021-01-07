@@ -36,4 +36,11 @@ public class WordRepository {
             return null;
         }
     }
+
+    public void deleteWord(String word) {
+        Executor executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            wordDao.delete(word);
+        });
+    }
 }

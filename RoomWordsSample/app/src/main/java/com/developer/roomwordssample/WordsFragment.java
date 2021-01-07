@@ -7,16 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.List;
 
 public class WordsFragment extends Fragment {
 
@@ -44,6 +41,19 @@ public class WordsFragment extends Fragment {
             wordsAdapter.setWords(words);
             rvWords.setAdapter(wordsAdapter);
             rvWords.setLayoutManager(new LinearLayoutManager(view.getContext()));
+            ItemTouchHelper.SimpleCallback simpleCallbackSwipeRight = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.ACTION_STATE_SWIPE, ItemTouchHelper.RIGHT) {
+                @Override
+                public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                    return false;
+                }
+
+                @Override
+                public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                    wordViewModel.deleteWord(wordsAdapter.getWord(viewHolder.getAdapterPosition()));
+                }
+            };
+            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallbackSwipeRight);
+            itemTouchHelper.attachToRecyclerView(rvWords);
         });
     }
 

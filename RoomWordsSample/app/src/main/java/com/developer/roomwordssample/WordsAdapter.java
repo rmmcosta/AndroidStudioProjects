@@ -44,6 +44,10 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.WordsViewHol
             return 0;
     }
 
+    public String getWord(int position) {
+        return words.get(position).getWord();
+    }
+
     class WordsViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvWord;
 
