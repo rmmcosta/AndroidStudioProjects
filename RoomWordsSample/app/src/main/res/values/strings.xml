@@ -13,4 +13,13 @@
     <string name="save_btn_text">Save</string>
     <string name="word_hints">input a word</string>
     <string name="word_placeholder">Word placeholder</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="data_repository_header">Data Repository</string>
+
+    <!-- Data Repository Preferences -->
+    <string name="use_database">Use database</string>
+    <string name="always_restore_database">Always restore database</string>
+
 </resources>

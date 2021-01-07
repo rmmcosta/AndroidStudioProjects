@@ -10,6 +10,7 @@
 
     <EditText
         android:id="@+id/etWord"
+        style="@style/text_view_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="@string/word_hints"
@@ -18,6 +19,7 @@
 
     <Button
         android:id="@+id/btnSaveWord"
+        style="@style/button_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/save_btn_text" />

@@ -39,6 +39,11 @@ public class WordDetailFragment extends Fragment {
 
         String word = String.valueOf(etWord.getText());
 
+        if (word.isEmpty()) {
+            showMessage("You must specify a word!");
+            return;
+        }
+
         assert (getActivity() != null);
         WordViewModel wordViewModel = new WordViewModel(getActivity().getApplication());
         if (wordViewModel.getWord(word) != null) {

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.WordsViewHolder> {
     private List<Word> words;
-    private Context context;
+    private final Context context;
 
     public WordsAdapter(Context context) {
         this.context = context;

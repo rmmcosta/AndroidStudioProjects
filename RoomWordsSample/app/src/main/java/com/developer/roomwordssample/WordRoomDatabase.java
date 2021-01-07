@@ -3,6 +3,7 @@ package com.developer.roomwordssample;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -31,6 +32,10 @@ public abstract class WordRoomDatabase extends RoomDatabase {
                                     super.onOpen(db);
                                     Executor executor = Executors.newSingleThreadExecutor();
                                     executor.execute(() -> {
+                                        boolean restoreDatabase = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("restore_database", false);
+                                        if (!restoreDatabase) {
+                                            return;
+                                        }
                                         wordRoomDatabaseInstance.wordDao().deleteAll();
                                         for (String each : initialWords) {
                                             wordRoomDatabaseInstance.wordDao().insert(new Word(each));
