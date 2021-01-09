@@ -45,6 +45,9 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.WordsViewHol
     }
 
     public String getWord(int position) {
+        if (words.isEmpty()) {
+            return null;
+        }
         return words.get(position).getWord();
     }
 

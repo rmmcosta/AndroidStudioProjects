@@ -23,4 +23,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/save_btn_text" />
+    <Button
+        android:id="@+id/btnDeleteAll"
+        style="@style/button_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_all_btn" />
 </LinearLayout>

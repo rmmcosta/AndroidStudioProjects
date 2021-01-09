@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class WordsFragment extends Fragment {
+    public static WordViewModel wordViewModel;
 
     @Override
     public View onCreateView(
@@ -34,7 +35,7 @@ public class WordsFragment extends Fragment {
                 .navigate(R.id.action_FirstFragment_to_SecondFragment));
 
         assert (getActivity() != null);
-        WordViewModel wordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
+        wordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
         wordViewModel.getAllWords().observe(getActivity(), words -> {
             RecyclerView rvWords = view.findViewById(R.id.rvWords);
             WordsAdapter wordsAdapter = new WordsAdapter(getContext());
@@ -49,7 +50,9 @@ public class WordsFragment extends Fragment {
 
                 @Override
                 public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                    wordViewModel.deleteWord(wordsAdapter.getWord(viewHolder.getAdapterPosition()));
+                    int position = viewHolder.getAdapterPosition();
+                    wordViewModel.deleteWord(wordsAdapter.getWord(position));
+                    wordsAdapter.notifyItemRemoved(position);
                 }
             };
             ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallbackSwipeRight);

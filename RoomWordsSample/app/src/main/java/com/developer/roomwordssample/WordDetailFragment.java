@@ -12,9 +12,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class WordDetailFragment extends Fragment {
+    private WordViewModel wordViewModel;
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -26,8 +29,18 @@ public class WordDetailFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        wordViewModel = WordsFragment.wordViewModel;
         Button saveButton = view.findViewById(R.id.btnSaveWord);
         saveButton.setOnClickListener(view1 -> addWord(view));
+        Button deleteButton = view.findViewById(R.id.btnDeleteAll);
+        deleteButton.setOnClickListener(view12 -> deleteAllWords());
+    }
+
+    private void deleteAllWords() {
+        wordViewModel.deleteAll();
+        showMessage("All Words have been deleted!");
+        NavHostFragment.findNavController(WordDetailFragment.this)
+                .navigate(R.id.action_SecondFragment_to_FirstFragment);
     }
 
     private void addWord(View mainView) {
@@ -45,7 +58,6 @@ public class WordDetailFragment extends Fragment {
         }
 
         assert (getActivity() != null);
-        WordViewModel wordViewModel = new WordViewModel(getActivity().getApplication());
         if (wordViewModel.getWord(word) != null) {
             showMessage("The Word already exists in the database!");
             return;

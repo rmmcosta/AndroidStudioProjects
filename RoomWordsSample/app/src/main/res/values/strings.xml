@@ -21,5 +21,6 @@
     <!-- Data Repository Preferences -->
     <string name="use_database">Use database</string>
     <string name="always_restore_database">Always restore database</string>
+    <string name="delete_all_btn">Delete All</string>
 
 </resources>
