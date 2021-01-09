@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/main_padding"
+    tools:context=".TopLevelActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/logo_margin_bottom">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="@dimen/logo_image_margin_left"
+            android:contentDescription="@string/coffee_logo_image_description"
+            android:src="@drawable/coffee_logo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/logo_text_margin_top"
+            android:layout_toEndOf="@id/ivLogo"
+            android:text="@string/app_name"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvOptionsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/list_padding" />
+</LinearLayout>

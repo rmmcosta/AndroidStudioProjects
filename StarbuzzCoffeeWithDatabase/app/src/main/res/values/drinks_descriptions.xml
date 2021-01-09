@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="latte_description">Caffe latte (or simply latte) is a coffee drink made with espresso and steamed milk.
+        The word comes from the Italian caffè e latte, caffelatte or caffellatte, which means "coffee &amp; milk"</string>
+    <string name="cappuccino_description">Outside of Italy, cappuccino is a coffee drink that today is typically composed of a single espresso shot and hot milk,
+        with the surface topped with foamed milk. Cappuccinos are most often prepared with an espresso machine.</string>
+    <string name="filter_description">Filter coffee is not exactly a new style in the wide world of coffee.
+        In fact, in some parts of the globe, filter coffee is far more popular than espresso.</string>
+</resources>

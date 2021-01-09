@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="main_padding">16dp</dimen>
+    <dimen name="logo_margin_bottom">12dp</dimen>
+    <dimen name="logo_image_margin_left">10dp</dimen>
+    <dimen name="logo_text_margin_top">40dp</dimen>
+    <dimen name="list_padding">12dp</dimen>
+    <dimen name="options_padding">6dp</dimen>
+    <dimen name="list_icon_margin_left">5dp</dimen>
+    <dimen name="drink_description_margin_top">5dp</dimen>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Starbuzz Coffee with Database</string>
+    <string name="coffee_logo_image_description">Coffee Logo</string>
+    <string name="option_example">Option Example</string>
+    <string name="list_icon_description">List icon</string>
+    <string name="description_example">Description example</string>
+    <string name="drink_picture_description">Drink picture</string>
+    <string name="name_example">Name Example</string>
+</resources>
