@@ -1,11 +1,14 @@
 package com.example.starbuzzcoffeewithdatabase;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.starbuzzcoffeewithdatabase.adapters.DrinksAdapter;
 
 public class DrinkActivity extends AppCompatActivity {
     private TextView tvDrinkDescription;
@@ -20,12 +23,15 @@ public class DrinkActivity extends AppCompatActivity {
         fillData(getIntent());
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private void fillData(Intent intent) {
-        Product product = (Product) intent.getSerializableExtra(DrinkCategoryActivity.SELECTED_DRINK);
-        assert product != null;
-        tvDrinkDescription.setText(getResources().getText(product.getResourceDescription()));
-        tvDrinkName.setText(product.getName());
-        ivDrinkImage.setImageDrawable(getResources().getDrawable(product.getDrawable()));
+        SBuzzSQLiteHelper sqLiteHelper = SBuzzSQLiteHelper.getInstance(this);
+        int _id = intent.getIntExtra(DrinksAdapter.SELECTED_DRINK_ID, 0);
+        DrinkEntity drinkEntity = sqLiteHelper.getDrink(_id);
+        assert drinkEntity != null;
+        tvDrinkDescription.setText(getResources().getText(drinkEntity.getDescriptionId()));
+        tvDrinkName.setText(drinkEntity.getName());
+        ivDrinkImage.setImageDrawable(getResources().getDrawable(drinkEntity.getDrawableId()));
     }
 
     private void initializeLocals() {
