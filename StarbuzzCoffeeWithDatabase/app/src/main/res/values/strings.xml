@@ -6,4 +6,5 @@
     <string name="description_example">Description example</string>
     <string name="drink_picture_description">Drink picture</string>
     <string name="name_example">Name Example</string>
+    <string name="inserted_message">Inserted record with id %d</string>
 </resources>

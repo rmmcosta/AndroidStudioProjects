@@ -2,6 +2,7 @@ package com.example.starbuzzcoffeewithdatabase;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,8 +27,9 @@ public class DrinkActivity extends AppCompatActivity {
     @SuppressLint("UseCompatLoadingForDrawables")
     private void fillData(Intent intent) {
         SBuzzSQLiteHelper sqLiteHelper = SBuzzSQLiteHelper.getInstance(this);
+        SQLiteDatabase sqLiteDatabase = sqLiteHelper.getReadableDatabase();
         int _id = intent.getIntExtra(DrinksAdapter.SELECTED_DRINK_ID, 0);
-        DrinkEntity drinkEntity = sqLiteHelper.getDrink(_id);
+        DrinkEntity drinkEntity = sqLiteHelper.getDrink(sqLiteDatabase, _id);
         assert drinkEntity != null;
         tvDrinkDescription.setText(getResources().getText(drinkEntity.getDescriptionId()));
         tvDrinkName.setText(drinkEntity.getName());

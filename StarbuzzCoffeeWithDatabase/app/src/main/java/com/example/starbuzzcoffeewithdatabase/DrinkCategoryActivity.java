@@ -1,5 +1,6 @@
 package com.example.starbuzzcoffeewithdatabase;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class DrinkCategoryActivity extends AppCompatActivity {
 
     private void initializeDrinksList() {
         SBuzzSQLiteHelper sqLiteHelper = SBuzzSQLiteHelper.getInstance(this);
-        drinksList = sqLiteHelper.getDrinks();
+        SQLiteDatabase sqLiteDatabase = sqLiteHelper.getReadableDatabase();
+        drinksList = sqLiteHelper.getDrinks(sqLiteDatabase);
     }
 }

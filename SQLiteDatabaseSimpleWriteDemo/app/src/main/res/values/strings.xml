@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SQLiteDatabaseSimpleWriteDemo</string>
+    <string name="title">Simple SQLite Write Demo</string>
+    <string name="save_btn">Save</string>
+    <string name="description_hint">input the description</string>
+    <string name="name_hint">input the name</string>
+    <string name="name_label">Name</string>
+    <string name="description_label">Description</string>
+    <string name="success_insert_message">Inserted with success a record with the id %d</string>
+</resources>
