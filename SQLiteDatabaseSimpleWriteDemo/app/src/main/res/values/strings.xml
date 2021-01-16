@@ -7,4 +7,8 @@
     <string name="name_label">Name</string>
     <string name="description_label">Description</string>
     <string name="success_insert_message">Inserted with success a record with the id %d</string>
+    <string name="id_placeholder">1</string>
+    <string name="name_placeholder">Coiso</string>
+    <string name="description_placeholder">the description e cenas</string>
+    <string name="timestamp_placeholder">2020-01-01 18:20:00</string>
 </resources>
