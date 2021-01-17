@@ -79,6 +79,7 @@ public class SBuzzSQLiteHelper extends SQLiteOpenHelper {
             cursor.moveToNext();
             count++;
         }
+        cursor.close();
         return drinks;
     }
 

@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class SimpleWriteSQLite extends SQLiteOpenHelper {
@@ -37,6 +36,13 @@ public class SimpleWriteSQLite extends SQLiteOpenHelper {
         }
     }
 
+    public long insertSimple(String name, String description) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        long id = insertSimple(sqLiteDatabase, name, description);
+        sqLiteDatabase.close();
+        return id;
+    }
+
     public long insertSimple(SQLiteDatabase sqLiteDatabase, String name, String description) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("NAME", name);
@@ -44,7 +50,19 @@ public class SimpleWriteSQLite extends SQLiteOpenHelper {
         return sqLiteDatabase.insert(SIMPLE_WRITE_TABLE, null, contentValues);
     }
 
-    public List<Simple> getSimpleList(SQLiteDatabase sqLiteDatabase) {
+    public long countSimple() {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String sqlCount = String.format("Select count(1) from %s", SIMPLE_WRITE_TABLE);
+        Cursor cursor = sqLiteDatabase.rawQuery(sqlCount, null);
+        if (cursor.moveToFirst()) {
+            return cursor.getInt(0);
+        } else {
+            return 0;
+        }
+    }
+
+    public List<Simple> getSimpleList() {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         String[] columns = null;
         String selection = null;
         String[] selectionArgs = null;
@@ -58,12 +76,16 @@ public class SimpleWriteSQLite extends SQLiteOpenHelper {
             simpleList.add(new Simple(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4) == 1));
             cursor.moveToNext();
         }
+        cursor.close();
+        sqLiteDatabase.close();
         return simpleList;
     }
 
-    public void updateFavorite(SQLiteDatabase sqLiteDatabase, int id, boolean favorite) {
+    public void updateFavorite(int id, boolean favorite) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("FAVORITE", favorite ? 1 : 0);
         sqLiteDatabase.update(SIMPLE_WRITE_TABLE, contentValues, "_id=?", new String[]{String.valueOf(id)});
+        sqLiteDatabase.close();
     }
 }

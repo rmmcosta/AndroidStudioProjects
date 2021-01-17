@@ -13,6 +13,7 @@ import java.util.List;
 
 public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleViewHolder> {
     private List<Simple> simpleList;
+
     private View.OnClickListener onClickListener;
 
     public SimpleAdapter(List<Simple> simpleList, View.OnClickListener onClickListener) {
@@ -34,6 +35,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
         holder.tvName.setText(simple.getName());
         holder.tvDescription.setText(simple.getDescription());
         holder.tvTimestamp.setText(simple.getTimestamp());
+        holder.tvFavorite.setText(simple.isFavorite() ? "true" : "false");
         if (simple.isFavorite()) {
             holder.tvName.setTextColor(Color.BLUE);
         }
@@ -42,6 +44,11 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
     @Override
     public int getItemCount() {
         return simpleList.size();
+    }
+
+    public void setSimpleList(List<Simple> simpleList) {
+        this.simpleList = simpleList;
+        notifyDataSetChanged();
     }
 
     public void addSimple(Simple simple) {
@@ -65,10 +72,11 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
     }
 
     class SimpleViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvId;
-        private TextView tvName;
-        private TextView tvDescription;
-        private TextView tvTimestamp;
+        private final TextView tvId;
+        private final TextView tvName;
+        private final TextView tvDescription;
+        private final TextView tvTimestamp;
+        private final TextView tvFavorite;
 
         public SimpleViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +85,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
             tvName = itemView.findViewById(R.id.tvName);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+            tvFavorite = itemView.findViewById(R.id.tvFavorite);
         }
     }
 }

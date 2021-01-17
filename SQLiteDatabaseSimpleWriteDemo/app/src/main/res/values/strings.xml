@@ -11,4 +11,10 @@
     <string name="name_placeholder">Coiso</string>
     <string name="description_placeholder">the description e cenas</string>
     <string name="timestamp_placeholder">2020-01-01 18:20:00</string>
+    <string name="fill_simple_table_btn">Fill Simple Table</string>
+    <string name="auto_description">auto description %d</string>
+    <string name="auto_name">auto name %d</string>
+    <string name="records_count_placeholder">20</string>
+    <string name="favorite_placeholder">true</string>
+    <string name="separator_horizontal">-</string>
 </resources>
