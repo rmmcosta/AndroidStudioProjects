@@ -34,6 +34,22 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvOptionsList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/list_padding">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/your_favorite_drinks"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFavoriteDrinks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_xs"
         android:padding="@dimen/list_padding" />
 </LinearLayout>

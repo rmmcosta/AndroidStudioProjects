@@ -29,8 +29,7 @@ public class DrinkCategoryActivity extends AppCompatActivity {
     }
 
     private void initializeDrinksList() {
-        SBuzzSQLiteHelper sqLiteHelper = SBuzzSQLiteHelper.getInstance(this);
-        SQLiteDatabase sqLiteDatabase = sqLiteHelper.getReadableDatabase();
-        drinksList = sqLiteHelper.getDrinks(sqLiteDatabase);
+        SBuzzSQLiteHelper sqLiteHelper = new SBuzzSQLiteHelper(this);
+        drinksList = sqLiteHelper.getDrinks();
     }
 }

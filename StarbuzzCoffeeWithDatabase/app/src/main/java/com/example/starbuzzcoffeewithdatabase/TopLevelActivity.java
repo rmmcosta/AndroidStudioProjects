@@ -7,14 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.starbuzzcoffeewithdatabase.adapters.DrinksAdapter;
 import com.example.starbuzzcoffeewithdatabase.adapters.OptionsListAdapter;
 
 public class TopLevelActivity extends AppCompatActivity {
     private String[] optionsList;
-    private RecyclerView rvOptionsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +27,15 @@ public class TopLevelActivity extends AppCompatActivity {
     }
 
     private void initializeRVOptionsList() {
-        rvOptionsList = findViewById(R.id.rvOptionsList);
-        RecyclerView.Adapter optionsListAdapter = new OptionsListAdapter(this, optionsList, new OnOptionsClickListener());
+        RecyclerView rvOptionsList = findViewById(R.id.rvOptionsList);
+        OptionsListAdapter optionsListAdapter = new OptionsListAdapter(this, optionsList, new OnOptionsClickListener());
         rvOptionsList.setAdapter(optionsListAdapter);
         rvOptionsList.setLayoutManager(new LinearLayoutManager(this));
+        SBuzzSQLiteHelper sBuzzSQLiteHelper = new SBuzzSQLiteHelper(this);
+        DrinksAdapter drinksAdapter = new DrinksAdapter(this, sBuzzSQLiteHelper.getFavoriteDrinks());
+        RecyclerView rvFavoriteDrinks = findViewById(R.id.rvFavoriteDrinks);
+        rvFavoriteDrinks.setAdapter(drinksAdapter);
+        rvFavoriteDrinks.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void initializeOptions() {

@@ -5,12 +5,14 @@ public class DrinkEntity {
     private final int descriptionId;
     private final int drawableId;
     private final int id;
+    private final boolean favorite;
 
-    public DrinkEntity(int id, String name, int descriptionId, int drawableId) {
+    public DrinkEntity(int id, String name, int descriptionId, int drawableId, boolean favorite) {
         this.id = id;
         this.name = name;
         this.descriptionId = descriptionId;
         this.drawableId = drawableId;
+        this.favorite = favorite;
     }
 
     public String getName() {
@@ -27,5 +29,9 @@ public class DrinkEntity {
 
     public int getId() {
         return id;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
     }
 }

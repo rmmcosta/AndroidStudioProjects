@@ -8,4 +8,5 @@
     <dimen name="options_padding">6dp</dimen>
     <dimen name="list_icon_margin_left">5dp</dimen>
     <dimen name="drink_description_margin_top">5dp</dimen>
+    <dimen name="margin_top_xs">5dp</dimen>
 </resources>
