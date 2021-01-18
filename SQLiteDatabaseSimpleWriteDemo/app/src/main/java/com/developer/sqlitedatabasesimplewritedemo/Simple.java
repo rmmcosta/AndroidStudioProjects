@@ -1,6 +1,9 @@
 package com.developer.sqlitedatabasesimplewritedemo;
 
+import android.database.Cursor;
+
 public class Simple {
+    private static final int CURSOR_COLUMN_COUNT = 5;
     private final long id;
     private final String name;
     private String description;
@@ -41,5 +44,13 @@ public class Simple {
 
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
+    }
+
+    public static Simple fromCursor(Cursor cursor) {
+        assert (cursor.getColumnCount() == CURSOR_COLUMN_COUNT);
+        assert (!cursor.isClosed());
+        assert (!cursor.isAfterLast());
+        assert (cursor.getCount() > 0);
+        return new Simple(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4) == 1);
     }
 }

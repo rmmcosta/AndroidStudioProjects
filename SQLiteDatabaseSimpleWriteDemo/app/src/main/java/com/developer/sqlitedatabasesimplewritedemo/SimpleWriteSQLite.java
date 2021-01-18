@@ -81,6 +81,16 @@ public class SimpleWriteSQLite extends SQLiteOpenHelper {
         return simpleList;
     }
 
+    public Cursor getAllSimpleCursor(SQLiteDatabase sqLiteDatabase) {
+        String[] columns = null;
+        String selection = null;
+        String[] selectionArgs = null;
+        String groupBy = null;
+        String having = null;
+        String orderBy = null;
+        return sqLiteDatabase.query(SIMPLE_WRITE_TABLE, columns, selection, selectionArgs, groupBy, having, orderBy);
+    }
+
     public void updateFavorite(int id, boolean favorite) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

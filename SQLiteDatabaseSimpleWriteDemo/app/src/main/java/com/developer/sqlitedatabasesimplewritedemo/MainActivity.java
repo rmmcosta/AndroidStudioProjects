@@ -1,17 +1,20 @@
 package com.developer.sqlitedatabasesimplewritedemo;
 
-import android.database.Cursor;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,16 +41,32 @@ public class MainActivity extends AppCompatActivity {
             simpleWriteSQLite.updateFavorite(id, newFavorite);
             simpleAdapter.updateSimpleFavorite(id, newFavorite);
         });
-        /*Cursor cursorAllRecords = simpleWriteSQLite.getAllSimpleCursor();
-        String[] displayColumns = new String[]{"_id", "NAME", "DESCRIPTION", "CREATED_ON", "FAVORITE"};
-        int[] textViews = new int[]{R.id.tvId, R.id.tvName, R.id.tvDescription, R.id.tvTimestamp, R.id.tvFavorite};
-        recyclerView.setAdapter(new SimpleCursorAdapter(this, R.layout.simple_detail, cursorAllRecords, displayColumns, textViews, 0));*/
         recyclerView.setAdapter(simpleAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recordsCount = simpleWriteSQLite.countSimple();
         tvCount = findViewById(R.id.tvRecordsCount);
         tvCount.setText(String.valueOf(recordsCount));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = new MenuInflater(this);
+        menuInflater.inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.miListView) {
+            Intent intent = new Intent(this, MainActivity2.class);
+            startActivity(intent);
+        }
+        if (item.getItemId() == R.id.miCursorRecyclerView) {
+            Intent intent = new Intent(this, MainActivity3.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

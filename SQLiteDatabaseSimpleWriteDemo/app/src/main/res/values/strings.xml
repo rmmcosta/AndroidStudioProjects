@@ -17,4 +17,6 @@
     <string name="records_count_placeholder">20</string>
     <string name="favorite_placeholder">true</string>
     <string name="separator_horizontal">-</string>
+    <string name="list_view_menu_item">List View</string>
+    <string name="cursor_recycler_view_menu_item">Cursor Recycler View</string>
 </resources>
