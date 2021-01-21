@@ -4,4 +4,5 @@
     <string name="start">Start</string>
     <string name="stop">Stop</string>
     <string name="title_live_data">Chronometer with live data</string>
+    <string name="timer_placeholder">0</string>
 </resources>

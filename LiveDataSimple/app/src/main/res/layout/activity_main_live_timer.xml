@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".liveChronometer.MainActivityLiveTimer">
+    tools:context=".liveElapsedTime.MainActivityLiveTimer">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,9 +14,11 @@
         android:text="@string/title_live_data"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-    <Chronometer
-        android:id="@+id/chronometerLive"
+    <TextView
+        android:id="@+id/tvTimer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_normal"
+        android:text="@string/timer_placeholder" />
 
 </LinearLayout>

@@ -1,7 +1,7 @@
-package com.developer.livedatasimple.liveChronometer;
+package com.developer.livedatasimple.liveElapsedTime;
 
 import android.os.Bundle;
-import android.widget.Chronometer;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,9 +13,8 @@ public class MainActivityLiveTimer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_live_timer);
-        Chronometer chronometer = findViewById(R.id.chronometerLive);
-        chronometer.start();
+        TextView tvTimer = findViewById(R.id.tvTimer);
         LiveTimer liveTimer = new LiveTimer();
-        liveTimer.getLiveTimer().observe(this, aLong -> chronometer.setBase(aLong));
+        liveTimer.getLiveTimer().observe(this, aLong -> tvTimer.setText(String.valueOf(aLong)));
     }
 }

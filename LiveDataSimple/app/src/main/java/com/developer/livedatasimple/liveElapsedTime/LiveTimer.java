@@ -1,4 +1,6 @@
-package com.developer.livedatasimple.liveChronometer;
+package com.developer.livedatasimple.liveElapsedTime;
+
+import android.os.SystemClock;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -7,18 +9,19 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class LiveTimer {
-    private Timer timer;
-    private MutableLiveData<Long> liveTimer;
+    private final MutableLiveData<Long> liveTimer;
     private static final long DELAY = 1000;
-    private long currentTime = 0;
+    private final long initialTime;
+    private long currentTime;
 
     public LiveTimer() {
-        timer = new Timer();
+        Timer timer = new Timer();
+        initialTime = SystemClock.elapsedRealtime();
         liveTimer = new MutableLiveData<>();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                currentTime += DELAY;
+                currentTime = (SystemClock.elapsedRealtime() - initialTime) / 1000;
                 liveTimer.postValue(currentTime);
             }
         }, DELAY, DELAY);
