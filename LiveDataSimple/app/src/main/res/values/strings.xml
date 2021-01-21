@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LiveDataSimple</string>
+    <string name="title_simple">Chronometer with saved instance state</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="title_live_data">Chronometer with live data</string>
+</resources>
