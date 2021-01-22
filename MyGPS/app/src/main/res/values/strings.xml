@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyGPS</string>
+    <string name="location_placeholder">-</string>
+    <string name="location_format">%f, %f</string>
+</resources>
